@@ -11,3 +11,62 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text-primary {
+  color: #7abf18;
+}
+
+.banner-image {
+  position: relative;
+  height: 75vh;
+  width: 100%;
+}
+
+.banner-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* adjust the opacity as per your preference */
+}
+
+.banner-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.eco_headings:after {
+  left: auto;
+  right: 0;
+}
+.eco_headings:after, .eco_headings:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 9px;
+  width: 36%;
+  border-top: 2px solid #d4d4d4;
+}
+
+
+.event-container:hover .col-span-1 {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.event-container:hover .col-span-3 {
+  background-color: #4a90e2;
+  color: white;
+}
