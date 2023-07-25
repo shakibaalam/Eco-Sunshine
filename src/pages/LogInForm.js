@@ -1,20 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import banner from "../img/bg-1.jpg";
 import { FaEyeSlash } from "react-icons/fa";
 import { AiFillEye } from "react-icons/ai";
+import { useCreateLoginMutation } from "../redux/auth/authApi";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setCredentials } from "../redux/Slice/authSlice";
 
 const LoginForm = () => {
+  const [createLogin, resInfo] = useCreateLoginMutation();
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm({ mode: "onChange" });
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
+  useEffect(() => {
+    if (resInfo.status === "fulfilled") {
+      const { accessToken, refreshToken, userDetails } = resInfo.data;
+      const data = {
+        accessToken: accessToken,
+        refreshToken: refreshToken,
+        user: JSON.stringify(userDetails),
+      };
+      dispatch(setCredentials(data));
+      navigate("/");
+    } else if (resInfo.status === "rejected") {
+      console.log('problem');
+    }
+  }, [resInfo.status, resInfo.data, resInfo.error, dispatch, navigate]);
+
   const onSubmit = (data) => {
-    console.log(data);
+    let email = 'web.moniruzzaman1@gmail.com'
+    let password = '123456'
+    createLogin({ email, password });
   };
 
   return (

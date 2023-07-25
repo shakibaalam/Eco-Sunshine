@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import axios from "axios";
-// import { URL } from "../../Components/utils";
 import { logOut, setCredentials } from "../Slice/authSlice";
 
 const URL='http://localhost:5000/'
