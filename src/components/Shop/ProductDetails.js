@@ -9,8 +9,6 @@ const ProductDetails = () => {
         banner={bannerImg}
         title="PLANTS SAVING LIFE PROVIDING FRESH AIR"
       />
-
-      
     </div>
   );
 };

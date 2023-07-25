@@ -13,6 +13,8 @@ import BlogDetails from "../components/Blog/BlogDetails";
 import EventDetails from "../components/Event/EventDetails";
 import CampaignDetails from "../components/Campaign/CampaignDetails";
 import ProductDetails from "../components/Shop/ProductDetails";
+import LogInForm from "../pages/LogInForm";
+import RegistrationForm from "../pages/RegistrationForm";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,8 @@ const router = createBrowserRouter([
       { path: "campaignDetails/:id", element: <CampaignDetails /> },
       { path: "product", element: <Product /> },
       { path: "productDetails/:id", element: <ProductDetails /> },
+      { path: "login", element: <LogInForm /> },
+      { path: "signup", element: <RegistrationForm /> },
     ],
   },
   {

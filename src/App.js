@@ -1,8 +1,21 @@
-import { RouterProvider } from "react-router-dom";
+import { BrowserRouter as Router, RouterProvider } from "react-router-dom";
 import "./App.css";
 import router from "./layout/router";
+import { Provider } from "react-redux";
+import { store } from "./redux/store/store";
+import { useEffect } from "react";
 
 function App() {
+  const state = store.getState();
+  const accessToken = state?.auth?.accessToken;
+
+  useEffect(() => {
+    if (!accessToken || !accessToken === null) {
+      router.navigate("/");
+    } else {
+      router.navigate("/");
+    }
+  }, [accessToken]);
   return (
     <div>
       <RouterProvider router={router}></RouterProvider>
