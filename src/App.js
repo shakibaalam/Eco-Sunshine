@@ -1,7 +1,8 @@
-import { BrowserRouter as Router, RouterProvider } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
 import router from "./layout/router";
-import { Provider } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { store } from "./redux/store/store";
 import { useEffect } from "react";
 
@@ -19,6 +20,7 @@ function App() {
   return (
     <>
       <RouterProvider router={router} />
+      <ToastContainer />
     </>
   );
 }

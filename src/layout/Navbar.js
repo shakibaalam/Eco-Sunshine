@@ -6,13 +6,19 @@ import { FaShoppingCart } from "@react-icons/all-files/fa/FaShoppingCart";
 import { GrLinkedinOption } from "@react-icons/all-files/gr/GrLinkedinOption";
 import { GrSkype } from "@react-icons/all-files/gr/GrSkype";
 import { GrTwitter } from "@react-icons/all-files/gr/GrTwitter";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import donateBg from "../img/donate-bg.jpg";
 import logo from "../img/logo.png";
 import Donation from "../shared/Donation";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { logOut } from "../redux/Slice/authSlice";
 
 const Navbar = () => {
   const location = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [selectedLink, setSelectedLink] = useState("");
   const [isPopup, setPopup] = useState(false);
   const [user, setUser] = useState(null);
@@ -20,25 +26,27 @@ const Navbar = () => {
   const [isRegisterSelected, setIsRegisterSelected] = useState(false);
 
   useEffect(() => {
-    // Extract the path from the location
     const currentPath = location.pathname;
-    // Set the selected link based on the current path
-    setSelectedLink(currentPath.slice(1)); // Remove the leading '/'
+    setSelectedLink(currentPath.slice(1));
 
-    // Check if the "Sign Up" or "Register" link is selected
     setIsSignUpSelected(currentPath.slice(1) === "signup");
     setIsRegisterSelected(currentPath.slice(1) === "login");
   }, [location]);
 
+  // Check if the current location contains "/dashboard"
+  const isDashboardActive =
+    location.pathname.includes("/dashboard") && selectedLink !== "dashboard";
+
   // Mock user data for demonstration
   const mockUser = {
-    name: "John Doe",
-    // Add more user data as needed
+    name: "John Doe"
   };
 
   // Function to handle logout
-  const handleLogout = () => {
-    setUser(null);
+  const signOut = () => {
+    // navigate("/");
+    dispatch(logOut());
+    toast.success("Logged out successfully");
   };
 
   return (
@@ -74,7 +82,9 @@ const Navbar = () => {
         <Link
           to="/"
           className={
-            selectedLink === "" ? "bg-black text-white px-4 py-2 rounded" : ""
+            selectedLink === "" && !isDashboardActive
+              ? "bg-black text-white px-4 py-2 rounded"
+              : ""
           }
         >
           Home
@@ -129,6 +139,18 @@ const Navbar = () => {
         >
           Shop
         </Link>
+        <Link
+          to="/dashboard"
+          className={
+            isDashboardActive
+              ? "bg-black text-white px-4 py-2 rounded"
+              : selectedLink === "dashboard"
+              ? "bg-black text-white px-4 py-2 rounded"
+              : ""
+          }
+        >
+          Dashboard
+        </Link>
 
         <div className="">
           {/* Conditionally render the login/signup link or user's name and logout option */}
@@ -136,7 +158,7 @@ const Navbar = () => {
             <>
               <span className="text-sm">Welcome, {user?.name}!</span>
               <button
-                onClick={handleLogout}
+                onClick={signOut}
                 className="bg-white text-primary px-4 py-2 rounded"
               >
                 Logout
