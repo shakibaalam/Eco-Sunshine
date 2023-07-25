@@ -15,6 +15,10 @@ import CampaignDetails from "../components/Campaign/CampaignDetails";
 import ProductDetails from "../components/Shop/ProductDetails";
 import LogInForm from "../pages/LogInForm";
 import RegistrationForm from "../pages/RegistrationForm";
+import RequireAuth from "../require/RequireAuth";
+import Dashboard from "../pages/Dashboard";
+import UserOrder from "../components/Dashboard/UserOrder";
+import MyDoantion from "../components/Dashboard/MyDoantion";
 
 const router = createBrowserRouter([
   {
@@ -35,8 +39,19 @@ const router = createBrowserRouter([
       { path: "productDetails/:id", element: <ProductDetails /> },
       { path: "login", element: <LogInForm /> },
       { path: "signup", element: <RegistrationForm /> },
+      {
+        path: "dashboard",
+        // element: <RequireAuth element={<Dashboard />} />,
+        element: <Dashboard />,
+        children: [
+          { path: "./", element: <UserOrder /> },
+          { path: "my-order", element: <UserOrder /> },
+          { path: "my-donation", element: <MyDoantion /> },
+        ],
+      },
     ],
   },
+
   {
     path: "*",
     element: <NotFound></NotFound>,

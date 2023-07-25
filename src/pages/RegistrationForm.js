@@ -1,8 +1,18 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import banner from "../img/bg-1.jpg";
+import { useCreateRegisterMutation } from "../redux/auth/authApi";
+import { setCredentials } from "../redux/Slice/authSlice";
+import { useDispatch } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const RegistrationForm = () => {
+  const [createRegister, resInfo] = useCreateRegisterMutation();
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const {
     register,
     handleSubmit,
@@ -12,10 +22,33 @@ const RegistrationForm = () => {
   const password = useRef({});
   password.current = watch("password", "");
 
+  useEffect(() => {
+    if (resInfo?.status === "fulfilled") {
+      const { accessToken, refreshToken, userDetails } = resInfo?.data;
+      const data = {
+        accessToken: accessToken,
+        refreshToken: refreshToken,
+        user: JSON.stringify(userDetails),
+      };
+      dispatch(setCredentials(data));
+      const prevPath = location.state?.from || "/";
+      navigate(prevPath);
+    } else if (resInfo?.status === "rejected") {
+      console.log("problem");
+    }
+  }, [
+    resInfo?.status,
+    resInfo?.data,
+    resInfo?.error,
+    dispatch,
+    navigate,
+    location.state?.from,
+  ]);
+
   const onSubmit = (data) => {
     console.log(data);
+    createRegister(data);
   };
-
   return (
     <div className="h-[100vh]" style={{ backgroundImage: `url(${banner})` }}>
       <div className="flex justify-center items-center h-full">

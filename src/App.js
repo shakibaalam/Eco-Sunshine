@@ -1,9 +1,10 @@
-import { BrowserRouter as  RouterProvider } from "react-router-dom";
+import { BrowserRouter as RouterProvider } from "react-router-dom";
 import "./App.css";
 import router from "./layout/router";
 import { store } from "./redux/store/store";
 import { useEffect } from "react";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   const state = store.getState();
   const accessToken = state?.auth?.accessToken;
@@ -23,6 +24,7 @@ function App() {
   return (
     <>
       <RouterProvider router={router} />
+      <ToastContainer />
     </>
   );
 }
