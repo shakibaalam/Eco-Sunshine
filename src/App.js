@@ -8,6 +8,11 @@ import { useEffect } from "react";
 function App() {
   const state = store.getState();
   const accessToken = state?.auth?.accessToken;
+  useEffect(() => {
+    const data = localStorage.getItem("user");
+    const user = JSON.parse(data);
+    console.log(user);
+  }, []);
 
   useEffect(() => {
     if (!accessToken || !accessToken === null) {
