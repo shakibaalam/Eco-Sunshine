@@ -226,7 +226,7 @@ const Dashboard = () => {
         </ul>
       </div>
       {/* Right Content */}
-      <div className="flex-1 p-8">
+      <div className="flex-1 p-8 h-screen overflow-y-auto ecoScroll">
         <Outlet />
       </div>
     </div>

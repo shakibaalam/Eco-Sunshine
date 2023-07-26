@@ -28,6 +28,7 @@ import ManageProduct from "../components/Dashboard/Admin/ManageProduct";
 import ManageUser from "../components/Dashboard/Admin/ManageUser";
 import ManageEvent from "../components/Dashboard/Admin/ManageEvent";
 import ManageOrder from "../components/Dashboard/Admin/ManageOrder";
+import ManageCampaign from "../components/Dashboard/Admin/ManageCampaign";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,7 @@ const router = createBrowserRouter([
       { path: "manage-user", element: <ManageUser /> },
       { path: "manage-event", element: <ManageEvent /> },
       { path: "manage-order", element: <ManageOrder /> },
+      { path: "manage-campaign", element: <ManageCampaign /> },
     ],
   },
   {
