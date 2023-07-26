@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from "react";
 import { BsSearch } from "@react-icons/all-files/bs/BsSearch";
 import { FaFacebookF } from "@react-icons/all-files/fa/FaFacebookF";
-import { FaWindowClose } from "@react-icons/all-files/fa/FaWindowClose";
 import { FaShoppingCart } from "@react-icons/all-files/fa/FaShoppingCart";
+import { FaWindowClose } from "@react-icons/all-files/fa/FaWindowClose";
 import { GrLinkedinOption } from "@react-icons/all-files/gr/GrLinkedinOption";
 import { GrSkype } from "@react-icons/all-files/gr/GrSkype";
 import { GrTwitter } from "@react-icons/all-files/gr/GrTwitter";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import donateBg from "../img/donate-bg.jpg";
-import logo from "../img/logo.png";
-import Donation from "../shared/Donation";
-import { toast } from "react-toastify";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import logo from "../img/logo.png";
 import { logOut } from "../redux/Slice/authSlice";
+import Donation from "../shared/Donation";
 
 const Navbar = () => {
   const location = useLocation();
@@ -51,7 +50,7 @@ const Navbar = () => {
 
   return (
     <div className="">
-      <div className=" flex justify-between lg:mx-44 py-5">
+      <div className=" flex justify-between lg:w-4/5 xl:w-3/4 mx-auto py-5">
         <div className=" flex items-center gap-5">
           <img className="w-16 h-16 rounded-full" src={logo} alt="" />
           <h1 className="text-3xl  font-bold ">
@@ -78,11 +77,11 @@ const Navbar = () => {
           </span>
         </div>
       </div>
-      <nav className="bg-[#7abf18] uppercase lg:mx-44 py-4 text-white flex justify-around items-center relative z-10">
+      <nav className="bg-[#7abf18] uppercase lg:lg:w-4/5 xl:w-3/4 mx-auto py-5  font-semibold flex justify-around items-center relative z-10 rounded-sm">
         <Link
           to="/"
           className={
-            selectedLink === "" ? "bg-black text-white px-4 py-2 rounded" : ""
+            selectedLink === "" ? " text-white font-bold  " : ""
           }
         >
           Home
@@ -91,7 +90,7 @@ const Navbar = () => {
           to="/about"
           className={
             selectedLink === "about"
-              ? " bg-black text-white px-4 py-2 rounded"
+              ? "  text-white font-bold "
               : ""
           }
         >
@@ -101,7 +100,7 @@ const Navbar = () => {
           to="/blog"
           className={
             selectedLink === "blog"
-              ? "bg-black text-white px-4 py-2 rounded"
+              ? " text-white font-bold "
               : ""
           }
         >
@@ -111,7 +110,7 @@ const Navbar = () => {
           to="/events"
           className={
             selectedLink === "events"
-              ? "bg-black text-white px-4 py-2 rounded"
+              ? " text-white font-bold "
               : ""
           }
         >
@@ -121,7 +120,7 @@ const Navbar = () => {
           to="/campaign"
           className={
             selectedLink === "campaign"
-              ? "bg-black text-white px-4 py-2 rounded"
+              ? " text-white font-bold "
               : ""
           }
         >
@@ -131,7 +130,7 @@ const Navbar = () => {
           to="/product"
           className={
             selectedLink === "product"
-              ? "bg-black text-white px-4 py-2 rounded"
+              ? " text-white font-bold "
               : ""
           }
         >
@@ -153,7 +152,7 @@ const Navbar = () => {
             to="/login"
             className={
               isSignUpSelected || isRegisterSelected
-                ? "bg-black text-white px-4 py-2 rounded"
+                ? " text-white font-bold "
                 : ""
             }
           >

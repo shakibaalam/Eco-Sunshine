@@ -15,10 +15,10 @@ const Blogs = () => {
       .catch((error) => console.error(error));
   }, []);
   return (
-    <div>
+    <div className="mt-20">
       <HeadTitle title="LATEST BLOGS" />
 
-      <div className=" grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 lg:mx-28 my-10">
+      <div className=" grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 lg:w-3/4 mx-auto my-10">
         {blogs.slice(0, 3).map((b) => (
           <AllBlogs b={b} key={b?.id} />
         ))}

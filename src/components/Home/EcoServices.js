@@ -9,7 +9,7 @@ import HeadTitle from '../../shared/HeadTitle';
 
 const EcoServices = () => {
     return (
-        <div className='w-full text-center py-10' style={{ 'backgroundImage': `url(${banner})` }}>
+        <div className='w-full text-center  py-10' style={{ 'backgroundImage': `url(${banner})` }}>
             <HeadTitle title='Eco Services'></HeadTitle>
 
             <div className=' flex justify-around mt-20 items-center text-[#666] lg:px-20'>

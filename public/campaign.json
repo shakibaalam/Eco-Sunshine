@@ -1,58 +1,65 @@
 [
-    { "_id":"1",
-      "title": "Green Areas Care Compaign",
-      "img": "https://i.ibb.co/hmyf9TQ/cause1.jpg",
-      "para": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet animi labore delectus recusandae laborum.",
-      "fund": "87%",
-      "days": "2195",
-      "goal": "1000"
-    },
-    {"_id":"2",
-      "title": "Fresh Water Supply",
-      "img": "https://i.ibb.co/wdrfhY8/cause2.jpg",
-      "para": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet animi labore delectus recusandae laborum. ",
-      "fund": "87%",
-      "days": "2195",
-      "goal": "1000"
-    },
-    {"_id":"3",
-      "title": "Care Campaign",
-      "img": "https://i.ibb.co/f0zC8Gc/cause3.jpg",
-      "para": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet animi labore delectus recusandae laborum. ",
-      "fund": "87%",
-      "days": "2195",
-      "goal": "1000"
-    },
-    {"_id":"3",
-      "title": "Care Campaign",
-      "img": "https://i.ibb.co/f0zC8Gc/cause3.jpg",
-      "para": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet animi labore delectus recusandae laborum. ",
-      "fund": "87%",
-      "days": "2195",
-      "goal": "1000"
-    },
-    {"_id":"4",
-      "title": "Clean Water For Drinking",
-      "img": "https://i.ibb.co/VTjL2dq/causes4.jpg",
-      "para": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet animi labore delectus recusandae laborum. ",
-      "fund": "87%",
-      "days": "2195",
-      "goal": "1000"
-    },
-    {"_id":"5",
-      "title": "Planting Green Around the World",
-      "img": "https://i.ibb.co/wLfg23y/causes5.jpg",
-      "para": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet animi labore delectus recusandae laborum. ",
-      "fund": "87%",
-      "days": "2195",
-      "goal": "1000"
-    },
-    {"_id":"6",
-      "title": "Help To Make World Green",
-      "img": "https://i.ibb.co/0qtKyGb/causes6.jpg",
-      "para": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet animi labore delectus recusandae laborum. ",
-      "fund": "87%",
-      "days": "2195",
-      "goal": "1000"
-    }
-  ]
+  {
+    "_id": "1",
+    "title": "Green Areas Care Compaign",
+    "img": "https://i.ibb.co/hmyf9TQ/cause1.jpg",
+    "para": "The 'Green Area Campaign' aims to protect and expand green spaces, encouraging environmental conservation, urban greening, and sustainable practices. Join us in preserving nature's beauty and fostering a healthier, more sustainable future for all. Together, we can make a difference. 🌿🌍 #GreenAreaCampaign",
+    "fund": "87%",
+    "days": "2195",
+    "goal": "1000"
+  },
+  {
+    "_id": "2",
+    "title": "Fresh Water Supply",
+    "img": "https://i.ibb.co/wdrfhY8/cause2.jpg",
+    "para": "Join our Fresh Water Supply Campaign! Together, we strive to secure clean and accessible water for all. Let's raise awareness, conserve water, and support sustainable solutions to ensure a healthier, more water-secure world. 💧🌊 #WaterForAll #FreshWaterCampaign",
+    "fund": "87%",
+    "days": "2195",
+    "goal": "1000"
+  },
+  {
+    "_id": "3",
+    "title": "Care Campaign",
+    "img": "https://i.ibb.co/f0zC8Gc/cause3.jpg",
+    "para": "Get involved in our Environment Care Campaign today! We're dedicated to promoting eco-friendly practices, biodiversity conservation, and sustainable living. Join us in safeguarding our planet's future for generations to come. 🌱🌏 #EnvironmentCare #SustainableLiving",
+    "fund": "87%",
+    "days": "2195",
+    "goal": "1000"
+  },
+  {
+    "_id": "3",
+    "title": "Care Campaign",
+    "img": "https://i.ibb.co/f0zC8Gc/cause3.jpg",
+    "para": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet animi labore delectus recusandae laborum. ",
+    "fund": "87%",
+    "days": "2195",
+    "goal": "1000"
+  },
+  {
+    "_id": "4",
+    "title": "Clean Water For Drinking",
+    "img": "https://i.ibb.co/VTjL2dq/causes4.jpg",
+    "para": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet animi labore delectus recusandae laborum. ",
+    "fund": "87%",
+    "days": "2195",
+    "goal": "1000"
+  },
+  {
+    "_id": "5",
+    "title": "Planting Green Around the World",
+    "img": "https://i.ibb.co/wLfg23y/causes5.jpg",
+    "para": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet animi labore delectus recusandae laborum. ",
+    "fund": "87%",
+    "days": "2195",
+    "goal": "1000"
+  },
+  {
+    "_id": "6",
+    "title": "Help To Make World Green",
+    "img": "https://i.ibb.co/0qtKyGb/causes6.jpg",
+    "para": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet animi labore delectus recusandae laborum. ",
+    "fund": "87%",
+    "days": "2195",
+    "goal": "1000"
+  }
+]

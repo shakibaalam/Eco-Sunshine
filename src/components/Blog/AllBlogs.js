@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 
 const AllBlogs = ({ b }) => {
   return (
-    <div key={b._id}>
-      <div className="relative w-full h-[200px] rounded group">
-        <img className="w-full h-[200px] rounded" src={b?.img} alt="" />
+    <div key={b._id} className=" shadow-lg shadow-[#79bf1856]">
+      <div className="relative w-full h-[200px] overflow-hidden rounded group">
+        <img className="w-full  rounded" src={b?.img} alt="" />
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-[#7abf18] bg-opacity-50 rounded">
           <Link
             to={`/blogDetails/${b?._id}`}
@@ -24,8 +24,7 @@ const AllBlogs = ({ b }) => {
         </p>
         <h4 className=" text-lg col-span-5">{b?.name}</h4>
       </div>
-
-      <div className="flex gap-10 items-center my-2 font-semibold">
+      <div className="flex gap-10 items-center my-2 font-semibold px-4">
         <p className="flex items-center gap-1">
           <BsFillEyeFill />
           {b?.views} Views
@@ -36,7 +35,7 @@ const AllBlogs = ({ b }) => {
         </p>
       </div>
 
-      <p className=" text-justify">{b?.des}</p>
+      <p className=" text-justify px-4 pb-4">{b?.des}</p>
     </div>
   );
 };

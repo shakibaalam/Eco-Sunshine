@@ -12,7 +12,7 @@ const Footer = () => {
       .catch((error) => console.error(error));
   }, []);
   return (
-    <div className="bg-[#1e1e1e] p-10 text-gray-200 flex gap-5 justify-around">
+    <div className="bg-[#1e1e1e] p-10 text-gray-200 flex gap-5 justify-around mt-20">
       <div>
         <h2 className="mb-10 text-lg font-bold ">ABOUT ECO SUNSHINE</h2>
         <p className="flex gap-2 items-center ">

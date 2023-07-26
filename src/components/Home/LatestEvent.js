@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import eventImg from "../../img/eco_events_img.jpg";
-import Events from "./Events";
 import HeadTitle from "../../shared/HeadTitle";
+import Events from "./Events";
 
 const LatestEvent = () => {
   const [events, setEvents] = useState([]);
@@ -13,12 +13,11 @@ const LatestEvent = () => {
       .catch((error) => console.error(error));
   }, []);
   return (
-    <div>
+    <div className="mt-20">
       <HeadTitle title="LATEST EVENTS" />
 
-      <div className="flex items-center lg:mx-28 my-10">
+      <div className="flex items-center lg:w-4/5 xl:w-3/4 mx-auto my-10">
         <img src={eventImg} alt="" />
-
         <div className=" relative ">
           {events.slice(0, 4).map((e) => (
             <Events key={e._id} e={e}></Events>

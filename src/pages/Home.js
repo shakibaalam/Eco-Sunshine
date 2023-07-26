@@ -15,8 +15,8 @@ const Home = () => {
             <Banner/>
             <EcoServices/>
             <EcoCauses/>
-            <DonateForm></DonateForm>
-            <Products></Products>
+            <DonateForm/>
+            <Products/>
             <LatestEvent/>
             <Blogs/>
         </div>
