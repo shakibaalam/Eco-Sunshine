@@ -10,7 +10,7 @@ const Banner = ({banner,title}) => {
       };
 
     return (
-        <div className="relative w-full h-[30vh]">
+        <div className="relative w-full h-[30vh] mt-[-35px]">
             <div style={bannerStyle} className="absolute inset-0 w-full h-full"></div>
             <div className="bg-black bg-opacity-50 absolute inset-0 w-full h-full"></div>
             <div className="content absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">

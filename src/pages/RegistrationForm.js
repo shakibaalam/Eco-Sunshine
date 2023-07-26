@@ -5,6 +5,8 @@ import { useCreateRegisterMutation } from "../redux/auth/authApi";
 import { setCredentials } from "../redux/Slice/authSlice";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import { setUser } from "../redux/Slice/userSlice";
+import { toast } from "react-toastify";
 
 const RegistrationForm = () => {
   const [createRegister, resInfo] = useCreateRegisterMutation();
@@ -31,10 +33,13 @@ const RegistrationForm = () => {
         user: JSON.stringify(userDetails),
       };
       dispatch(setCredentials(data));
+      dispatch(setUser(data?.user));
       const prevPath = location.state?.from || "/";
       navigate(prevPath);
     } else if (resInfo?.status === "rejected") {
       console.log("problem");
+      const errorMessage = resInfo?.error?.data?.message;
+      toast.error(errorMessage);
     }
   }, [
     resInfo?.status,
@@ -46,7 +51,7 @@ const RegistrationForm = () => {
   ]);
 
   const onSubmit = (data) => {
-    console.log(data);
+    //console.log(data);
     createRegister(data);
   };
   return (

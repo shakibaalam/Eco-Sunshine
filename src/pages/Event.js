@@ -16,7 +16,7 @@ const Event = () => {
   return (
     <div>
       <Banner banner={bannerImg} title="EVENT" />
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 lg:mx-28 my-10">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 lg:mx-28 mx-5 my-10">
         {events.map((e) => (
           <AllEvent e={e} key={e?.id} />
         ))}

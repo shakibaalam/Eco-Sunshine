@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Product from "./Product";
 import HeadTitle from "../../shared/HeadTitle";
+import { useGetProductQuery } from "../../redux/EndPoints/ApiEndpoints";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
+  const { data: ecoProduct, isLoading } = useGetProductQuery();
+  console.log(ecoProduct);
+
   useEffect(() => {
     fetch("products.json")
       .then((res) => res.json())

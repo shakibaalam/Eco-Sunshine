@@ -43,7 +43,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="relative h-[75vh] overflow-hidden">
+    <div className="relative h-[75vh] mt-[-35px]">
       {featuredProducts.map((item, index) => (
         <div
           key={item.id}

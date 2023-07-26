@@ -1,16 +1,25 @@
-import { apiSlice } from "./fetchbasequery";
+import { apiSlice } from "../EndPoints/fetchbasequery";
 
-export const premiseSlice = apiSlice.injectEndpoints({
+export const ecoSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    // get premise details
-    getPremiseDetails: builder.query({
+    // get all products
+    getProduct: builder.query({
       query: () => ({
-        url: `ideamall2/api/v2/premise-detail/`,
+        url: `/api/v1/products/get-product`,
         method: "GET",
       }),
-      providesTags: ["premise"],
+      providesTags: ["eco"],
+    }),
+
+    // get all blogs
+    getBlog: builder.query({
+      query: () => ({
+        url: `/api/v1/blog/get-blog`,
+        method: "GET",
+      }),
+      providesTags: ["eco"],
     }),
   }),
 });
 
-export const {} = apiSlice;
+export const { useGetProductQuery,useGetBlogQuery } = ecoSlice;

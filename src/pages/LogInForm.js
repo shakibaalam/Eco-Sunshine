@@ -7,6 +7,7 @@ import { useCreateLoginMutation } from "../redux/auth/authApi";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { setCredentials } from "../redux/Slice/authSlice";
+import { setUser } from "../redux/Slice/userSlice";
 
 const LoginForm = () => {
   const [createLogin, resInfo] = useCreateLoginMutation();
@@ -32,6 +33,7 @@ const LoginForm = () => {
         user: JSON.stringify(userDetails),
       };
       dispatch(setCredentials(data));
+      dispatch(setUser(data?.user));
       const prevPath = location.state?.from || "/";
       navigate(prevPath);
     } else if (resInfo?.status === "rejected") {

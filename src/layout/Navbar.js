@@ -11,7 +11,7 @@ import donateBg from "../img/donate-bg.jpg";
 import logo from "../img/logo.png";
 import Donation from "../shared/Donation";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../redux/Slice/authSlice";
 
 const Navbar = () => {
@@ -21,9 +21,18 @@ const Navbar = () => {
 
   const [selectedLink, setSelectedLink] = useState("");
   const [isPopup, setPopup] = useState(false);
-  const [user, setUser] = useState(null);
   const [isSignUpSelected, setIsSignUpSelected] = useState(false);
   const [isRegisterSelected, setIsRegisterSelected] = useState(false);
+
+  const user = useSelector((state) => {
+    const userData = state.auth.user;
+    try {
+      return JSON.parse(userData);
+    } catch (error) {
+      return userData;
+    }
+  });
+  //console.log(user);
 
   useEffect(() => {
     const currentPath = location.pathname;
@@ -33,19 +42,10 @@ const Navbar = () => {
     setIsRegisterSelected(currentPath.slice(1) === "login");
   }, [location]);
 
-  // Check if the current location contains "/dashboard"
-  const isDashboardActive =
-    location.pathname.includes("/dashboard") && selectedLink !== "dashboard";
-
-  // Mock user data for demonstration
-  const mockUser = {
-    name: "John Doe"
-  };
-
   // Function to handle logout
   const signOut = () => {
-    // navigate("/");
     dispatch(logOut());
+    // navigate("/login");
     toast.success("Logged out successfully");
   };
 
@@ -82,9 +82,7 @@ const Navbar = () => {
         <Link
           to="/"
           className={
-            selectedLink === "" && !isDashboardActive
-              ? "bg-black text-white px-4 py-2 rounded"
-              : ""
+            selectedLink === "" ? "bg-black text-white px-4 py-2 rounded" : ""
           }
         >
           Home
@@ -139,44 +137,29 @@ const Navbar = () => {
         >
           Shop
         </Link>
-        <Link
-          to="/dashboard"
-          className={
-            isDashboardActive
-              ? "bg-black text-white px-4 py-2 rounded"
-              : selectedLink === "dashboard"
-              ? "bg-black text-white px-4 py-2 rounded"
-              : ""
-          }
-        >
-          Dashboard
-        </Link>
 
-        <div className="">
-          {/* Conditionally render the login/signup link or user's name and logout option */}
-          {user ? (
-            <>
-              <span className="text-sm">Welcome, {user?.name}!</span>
-              <button
-                onClick={signOut}
-                className="bg-white text-primary px-4 py-2 rounded"
-              >
-                Logout
-              </button>
-            </>
-          ) : (
-            <Link
-              to="/login"
-              className={
-                isSignUpSelected || isRegisterSelected
-                  ? "bg-black text-white px-4 py-2 rounded"
-                  : ""
-              }
-            >
-              Login / Sign Up
-            </Link>
-          )}
-        </div>
+        {user && <Link to="/dashboard/my-order">Dashboard</Link>}
+
+        {user && <span className="">{user?.name}</span>}
+
+        {user ? (
+          <div className=" ">
+            <button onClick={signOut} className=" px-4 py-2 rounded uppercase">
+              Logout
+            </button>
+          </div>
+        ) : (
+          <Link
+            to="/login"
+            className={
+              isSignUpSelected || isRegisterSelected
+                ? "bg-black text-white px-4 py-2 rounded"
+                : ""
+            }
+          >
+            Login / Sign Up
+          </Link>
+        )}
         <button
           onClick={() => setPopup(true)}
           className="bg-white rounded-lg uppercase text-primary px-8 py-2 hover:bg-black"

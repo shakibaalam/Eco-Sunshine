@@ -2,9 +2,14 @@ import React, { useEffect, useState } from "react";
 import Banner from "../shared/Banner";
 import bannerImg from "../img/aboutBanner.jpg";
 import AllBlogs from "../components/Blog/AllBlogs";
+import { useGetBlogQuery } from "../redux/EndPoints/ApiEndpoints";
 
 const Blog = () => {
   const itemsPerPage = 3; // Number of blogs to show per page
+
+  const { data: ecoBlog, isLoading } = useGetBlogQuery();
+  //console.log(ecoBlog);
+
   const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 

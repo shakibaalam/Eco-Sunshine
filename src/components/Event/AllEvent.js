@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 const AllEvent = ({ e }) => {
   return (
-    <div>
+    <div >
       <div className="relative">
-        <img src={e?.img1} alt="" />
+        <img className=" w-full" src={e?.img1} alt="" />
         <img
           className="absolute w-20 h-20 border-8 border-white rounded-full bottom-[-16px] left-[-10px]"
           src={e?.img}

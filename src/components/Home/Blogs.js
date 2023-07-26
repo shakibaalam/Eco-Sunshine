@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import HeadTitle from "../../shared/HeadTitle";
 import AllBlogs from "../Blog/AllBlogs";
+import { useGetBlogQuery } from "../../redux/EndPoints/ApiEndpoints";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
+  const { data: ecoBlog, isLoading } = useGetBlogQuery();
+  //console.log(ecoBlog);
 
   useEffect(() => {
     fetch("blogs.json")

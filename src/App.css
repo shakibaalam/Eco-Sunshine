@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+
+  /* Styling the scrollbar */
+  .ecoScroll::-webkit-scrollbar {
+    width: 1px; /* Set the width of the scrollbar */
+  }
+  
+  .ecoScroll::-webkit-scrollbar-thumb {
+    background-color: #7abf18; /* Set the color of the scrollbar thumb */
+    border-radius: 4px; /* Round the corners of the scrollbar thumb */
+  }
+  
+  .ecoScroll::-webkit-scrollbar-track {
+    background-color: #000000; /* Set the color of the scrollbar track */
+  }
+  
+  .ecoScroll::-webkit-scrollbar-thumb:hover {
+    background-color: #7abf18; /* Set the color of the scrollbar thumb on hover */
+  }
