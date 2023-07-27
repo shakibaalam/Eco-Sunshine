@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { usePostCampaignMutation } from "../../../redux/EndPoints/ApiEndpoints";
+import { toast } from "react-toastify";
 
 const AddCampaign = () => {
+  const [postCampaign, resCampaignInfo] = usePostCampaignMutation();
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
 
+  useEffect(() => {
+    if (resCampaignInfo?.status === "fulfilled") {
+      console.log(resCampaignInfo?.status);
+      toast.success("Successfully posted");
+    } else if (resCampaignInfo?.status === "rejected") {
+      console.log(resCampaignInfo?.status);
+      const errorMessage = resCampaignInfo?.error?.data?.message;
+      toast.error(errorMessage);
+    }
+  }, [resCampaignInfo?.status, resCampaignInfo?.error?.data?.message]);
+
   const onSubmit = (data) => {
     console.log(data);
+    postCampaign(data);
   };
 
   return (

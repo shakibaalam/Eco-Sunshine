@@ -65,10 +65,10 @@ const router = createBrowserRouter([
       { path: "add-campaign", element: <AddCampaign /> },
       { path: "manage-blog", element: <ManageBlog /> },
       { path: "manage-product", element: <ManageProduct /> },
-      { path: "manage-user", element: <ManageUser /> },
       { path: "manage-event", element: <ManageEvent /> },
-      { path: "manage-order", element: <ManageOrder /> },
       { path: "manage-campaign", element: <ManageCampaign /> },
+      { path: "manage-user", element: <ManageUser /> },
+      { path: "manage-order", element: <ManageOrder /> },
     ],
   },
   {

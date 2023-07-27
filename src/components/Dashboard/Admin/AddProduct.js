@@ -1,15 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { usePostProductMutation } from "../../../redux/EndPoints/ApiEndpoints";
+import { toast } from "react-toastify";
 
 const AddProduct = () => {
+  const [postProduct, resProductInfo] = usePostProductMutation();
   const {
     register,
     formState: { errors },
-    handleSubmit, reset
+    handleSubmit,
+    reset,
   } = useForm();
+
+  useEffect(() => {
+    if (resProductInfo?.status === "fulfilled") {
+      console.log(resProductInfo?.status);
+      toast.success("Successfully posted");
+    } else if (resProductInfo?.status === "rejected") {
+      console.log(resProductInfo?.status);
+      const errorMessage = resProductInfo?.error?.data?.message;
+      toast.error(errorMessage);
+    }
+  }, [resProductInfo?.status, resProductInfo?.error?.data?.message]);
 
   const onSubmit = (data) => {
     console.log(data);
+    postProduct(data);
   };
 
   return (

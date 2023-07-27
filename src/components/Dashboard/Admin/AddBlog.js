@@ -1,15 +1,30 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import { usePostBlogMutation } from "../../../redux/EndPoints/ApiEndpoints";
+import { toast } from "react-toastify";
 
 const AddBlog = () => {
+  const [postBlog, resBlogInfo] = usePostBlogMutation();
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
 
+  useEffect(() => {
+    if (resBlogInfo?.status === "fulfilled") {
+      console.log(resBlogInfo?.status);
+      toast.success("Successfully posted");
+    } else if (resBlogInfo?.status === "rejected") {
+      console.log(resBlogInfo?.status);
+      const errorMessage = resBlogInfo?.error?.data?.message;
+      toast.error(errorMessage);
+    }
+  }, [resBlogInfo?.status, resBlogInfo?.error?.data?.message]);
+
   const onSubmit = (data) => {
     console.log(data);
+    postBlog(data);
   };
 
   return (
@@ -32,6 +47,21 @@ const AddBlog = () => {
           />
           {errors.title && (
             <span className="text-red-600">{errors.title.message}</span>
+          )}
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label htmlFor="author" className=" font-medium">
+            Author
+          </label>
+          <input
+            type="text"
+            id="author"
+            {...register("author", { required: "Author is required" })}
+            className="focus:outline-none border-b border-[#7abf18]"
+          />
+          {errors.author && (
+            <span className="text-red-600">{errors.author.message}</span>
           )}
         </div>
 

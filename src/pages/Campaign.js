@@ -17,7 +17,7 @@ const Campaign = () => {
       <Banner banner={bannerImg} title="CAMPAIGN" />
       <div className="mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 lg:mx-28 my-20">
         {campaign.slice(0, 3).map((c, index) => (
-          <AllCampaign key={index} c={c} />
+          <AllCampaign key={index} campaign={c} />
         ))}
       </div>
     </div>

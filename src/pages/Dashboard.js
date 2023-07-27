@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import logo from "../img/logo.png";
 import { useSelector } from "react-redux";
+import { FaStepBackward } from "react-icons/fa";
 
 const Dashboard = () => {
   const location = useLocation();
@@ -90,7 +91,7 @@ const Dashboard = () => {
             </NavLink>
           </li> */}
 
-          {user?.role  && (
+          {user?.role && (
             <>
               <li>
                 <NavLink
@@ -102,6 +103,18 @@ const Dashboard = () => {
                   }`}
                 >
                   Manage Orders
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/manage-user"
+                  className={`block py-2 px-4 rounded hover:bg-white hover:text-[#7abf18] ${
+                    selectedSubmenu === "manage-user"
+                      ? "bg-white text-[#7abf18]"
+                      : ""
+                  }`}
+                >
+                  Manage Users
                 </NavLink>
               </li>
               <li>
@@ -128,18 +141,7 @@ const Dashboard = () => {
                   Manage Products
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to="/dashboard/manage-user"
-                  className={`block py-2 px-4 rounded hover:bg-white hover:text-[#7abf18] ${
-                    selectedSubmenu === "manage-user"
-                      ? "bg-white text-[#7abf18]"
-                      : ""
-                  }`}
-                >
-                  Manage Users
-                </NavLink>
-              </li>
+
               <li>
                 <NavLink
                   to="/dashboard/manage-event"
@@ -180,7 +182,7 @@ const Dashboard = () => {
                 <NavLink
                   to="/dashboard/add-blog"
                   className={`block py-2 px-4 rounded hover:bg-white hover:text-[#7abf18] ${
-                    selectedSubmenu === "manage-blog"
+                    selectedSubmenu === "add-blog"
                       ? "bg-white text-[#7abf18]"
                       : ""
                   }`}
@@ -192,7 +194,7 @@ const Dashboard = () => {
                 <NavLink
                   to="/dashboard/add-event"
                   className={`block py-2 px-4 rounded hover:bg-white hover:text-[#7abf18] ${
-                    selectedSubmenu === "manage-event"
+                    selectedSubmenu === "add-event"
                       ? "bg-white text-[#7abf18]"
                       : ""
                   }`}
@@ -204,7 +206,7 @@ const Dashboard = () => {
                 <NavLink
                   to="/dashboard/add-campaign"
                   className={`block py-2 px-4 rounded hover:bg-white hover:text-[#7abf18] ${
-                    selectedSubmenu === "manage-campaign"
+                    selectedSubmenu === "add-campaign"
                       ? "bg-white text-[#7abf18]"
                       : ""
                   }`}
@@ -218,9 +220,9 @@ const Dashboard = () => {
           <li>
             <NavLink
               to="/"
-              className={`block py-2 px-4 rounded hover:bg-white hover:text-[#7abf18]`}
+              className={` py-2 px-4 bg-black rounded flex gap-2 items-center hover:bg-white hover:text-[#7abf18]`}
             >
-              Home
+             <FaStepBackward /> Back to Home
             </NavLink>
           </li>
         </ul>

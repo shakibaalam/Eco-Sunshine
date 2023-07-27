@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
+
+// Sample data for demonstration purposes
+const users = [
+  { id: 1, name: "John Doe", email: "john@example.com", role: "User" },
+  { id: 2, name: "Jane Doe", email: "jane@example.com", role: "Admin" },
+  { id: 3, name: "Mike Smith", email: "mike@example.com", role: "User" },
+];
 
 const ManageUser = () => {
-  // Sample data for demonstration purposes
-  const users = [
-    { id: 1, name: 'John Doe', email: 'john@example.com', role: 'User' },
-    { id: 2, name: 'Jane Doe', email: 'jane@example.com', role: 'Admin' },
-    { id: 3, name: 'Mike Smith', email: 'mike@example.com', role: 'User' },
-  ];
-
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Manage Users</h2>
@@ -24,17 +24,27 @@ const ManageUser = () => {
         <tbody>
           {users.map((user) => (
             <tr key={user.id}>
-              <td className="border p-2">{user.id}</td>
-              <td className="border p-2">{user.name}</td>
-              <td className="border p-2">{user.email}</td>
-              <td className="border p-2">{user.role}</td>
-              <td className="border p-2">
-                <button className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded mr-2">
-                  Edit
-                </button>
-                <button className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded">
-                  Delete
-                </button>
+              <td className="border p-2 text-center">{user.id}</td>
+              <td className="border p-2 text-center">{user.name}</td>
+              <td className="border p-2 text-center">{user.email}</td>
+              <td className="border p-2 text-center">{user.role}</td>
+              <td className="border p-2 text-center">
+                {user.role === 'User' && (
+                  <button
+                    //onClick={() => makeAdmin(user.id)}
+                    className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded mr-2"
+                  >
+                    Make Admin
+                  </button>
+                )}
+                {user.role === 'Super admin' && (
+                  <button
+                    //onClick={() => makeAdmin(user.id)}
+                    className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded mr-2"
+                  >
+                    Make Admin
+                  </button>
+                )}
               </td>
             </tr>
           ))}

@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { usePostEventMutation } from "../../../redux/EndPoints/ApiEndpoints";
 
 const AddEvent = () => {
+  const [postEvent, resEventInfo] = usePostEventMutation();
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
 
+  useEffect(() => {
+    if (resEventInfo?.status === "fulfilled") {
+      console.log(resEventInfo?.status);
+      toast.success("Successfully posted");
+    } else if (resEventInfo?.status === "rejected") {
+      console.log(resEventInfo?.status);
+      const errorMessage = resEventInfo?.error?.data?.message;
+      toast.error(errorMessage);
+    }
+  }, [resEventInfo?.status, resEventInfo?.error?.data?.message]);
+
   const onSubmit = (data) => {
     console.log(data);
+    postEvent(data)
   };
 
   return (
