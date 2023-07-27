@@ -91,7 +91,7 @@ const Dashboard = () => {
             </NavLink>
           </li> */}
 
-          {user?.role && (
+          {user?.role==="ADMIN" && (
             <>
               <li>
                 <NavLink

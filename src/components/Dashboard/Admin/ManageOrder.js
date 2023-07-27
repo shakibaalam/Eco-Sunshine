@@ -1,5 +1,4 @@
 import React from "react";
-import { useGetCampaignQuery } from "../../../redux/EndPoints/ApiEndpoints";
 
 // Sample data for demonstration purposes
 const orders = [
@@ -16,6 +15,7 @@ const ManageOrder = () => {
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Manage Orders</h2>
+      
       <table className="w-full border-collapse border">
         <thead>
           <tr>

@@ -207,6 +207,26 @@ export const ecoSlice = apiSlice.injectEndpoints({
     }),
 
     // ......................................... All User ...............................................//
+
+    // get all user for admin
+    getAllUser: builder.query({
+      query: () => ({
+        url: `/api/v1/auth/get-user`,
+        method: "GET",
+      }),
+      providesTags: ["eco"],
+    }),
+
+    // change user role
+    userRole: builder.mutation({
+      query: ({ id, data }) => (
+        {
+        url: `/api/v1/auth/update-user-role/${id}`,
+        method: "PATCH",
+        body: data,
+      }),
+      invalidatesTags: ["eco"],
+    }),
   }),
 });
 
@@ -231,4 +251,6 @@ export const {
   useGetCampaignQuery,
   useGetCampaignByIdQuery,
   usePostCampaignMutation,
+  useGetAllUserQuery,
+  useUserRoleMutation,
 } = ecoSlice;
