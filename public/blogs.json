@@ -1,57 +1,56 @@
 [
-    {
-        "_id":"1",
-        "name":"PLANTS SAVING LIFE PROVIDING FRESH",
-        "des":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse congue feugiat libero sit amet blandit. Maecenas maximus tempus est, vel laoreet ante dapibus id. Donec orci to",
-        "date":"18 JAN",
-        "views":"222",
-        "comments":"12",
-        "img": "https://i.ibb.co/Kbb1jBf/blog1.jpg"
-    },
-    {
-        "_id":"2",
-        "name":"LOVE THE NATURE GREEN",
-        "des":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse congue feugiat libero sit amet blandit. Maecenas maximus tempus est, vel laoreet ante dapibus id. Donec orci to",
-        "date":"20 FEB",
-        "views":"222",
-        "comments":"12",
-        "img": "https://i.ibb.co/jWnGK10/blog2.jpg"
-    },
-    {
-        "_id":"3",
-        "name":"PLANTS SAVING LIFE PROVIDING FRESH",
-        "des":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse congue feugiat libero sit amet blandit. Maecenas maximus tempus est, vel laoreet ante dapibus id. Donec orci to",
-        "date":"25 FEB",
-        "views":"222",
-        "comments":"12",
-        "img": "https://i.ibb.co/FqL7hps/blog3.jpg"
-    },
-    {
-        "_id":"4",
-        "name":"WAYS THE WORLD’S POWER",
-        "des":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse congue feugiat libero sit amet blandit. Maecenas maximus tempus est, vel laoreet ante dapibus id. Donec orci to",
-        "date":"25 FEB",
-        "views":"222",
-        "comments":"12",
-        "img": "https://i.ibb.co/S7xDttJ/blog4.jpg"
-    },
-    {
-        "_id":"5",
-        "name":"INTERESTING WAYS TO STUDY",
-        "des":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse congue feugiat libero sit amet blandit. Maecenas maximus tempus est, vel laoreet ante dapibus id. Donec orci to",
-        "date":"25 FEB",
-        "views":"222",
-        "comments":"12",
-        "img": "https://i.ibb.co/vV1csMK/blog5.jpg"
-    },
-    {
-        "_id":"6",
-        "name":"CHILD CAMPAIGN FOR ECO NA",
-        "des":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse congue feugiat libero sit amet blandit. Maecenas maximus tempus est, vel laoreet ante dapibus id. Donec orci to",
-        "date":"25 FEB",
-        "views":"222",
-        "comments":"12",
-        "img": "https://i.ibb.co/M57fLjy/blog6.jpg"
-    }
-    
+  {
+    "_id": "1",
+    "name": "PLANTS SAVING LIFE PROVIDING FRESH",
+    "des": " Saving lives, providing fresh air! They are vital for a healthy environment, purifying the air we breathe and sustaining diverse ecosystems. Support plant conservation and greening initiatives to secure a brighter, greener future for all. 🌿🌍 #PlantsSaveLives #FreshAirForAll",
+    "date": "18 JAN",
+    "views": "222",
+    "comments": "12",
+    "img": "https://i.ibb.co/Kbb1jBf/blog1.jpg"
+  },
+  {
+    "_id": "2",
+    "name": "LOVE THE NATURE GREEN",
+    "des": "'Love the Nature Green' is a heartfelt call to cherish and protect our green spaces. Let's embrace nature's beauty, promote environmental awareness, and work together to safeguard our planet's precious ecosystems. 🌿🌳 #LoveNatureGreen #ProtectOurPlanet",
+    "date": "20 FEB",
+    "views": "222",
+    "comments": "12",
+    "img": "https://i.ibb.co/jWnGK10/blog2.jpg"
+  },
+  {
+    "_id": "3",
+    "name": "PLANTS SAVING LIFE PROVIDING FRESH",
+    "des": "Saving Lives, Providing Freshness.' Embrace the power of plants in preserving life by producing fresh air. Support plant conservation efforts and sustainable practices to ensure a greener, healthier planet for everyone. 🌿💚 #PlantsSaveLives #FreshAirForAll",
+    "date": "25 FEB",
+    "views": "222",
+    "comments": "12",
+    "img": "https://i.ibb.co/FqL7hps/blog3.jpg"
+  },
+  {
+    "_id": "4",
+    "name": "WAYS THE WORLD’S POWER",
+    "des": "The world's power comes from various sources. Fossil fuels (coal, oil, gas) supply a significant portion, but the focus shifts to renewable options like solar, wind, hydro, geothermal, and biomass energy. Embracing sustainable alternatives is vital for a greener, low-carbon future. 🌍💡 #PowerSources #RenewableEnergy",
+    "date": "25 FEB",
+    "views": "222",
+    "comments": "12",
+    "img": "https://i.ibb.co/S7xDttJ/blog4.jpg"
+  },
+  {
+    "_id": "5",
+    "name": "INTERESTING WAYS TO STUDY",
+    "des": "Discover engaging study methods: mind mapping, teaching others, gamification, study groups, visual aids, online tutorials, flashcards, changing environments, mnemonic devices, regular breaks, practice tests, multisensory learning, journaling, chunking, and whiteboard practice. Customize your approach to maximize learning and retention. 📚✨ #StudySmart #LearningTechniques",
+    "date": "25 FEB",
+    "views": "222",
+    "comments": "12",
+    "img": "https://i.ibb.co/vV1csMK/blog5.jpg"
+  },
+  {
+    "_id": "6",
+    "name": "CHILD CAMPAIGN FOR ECO NA",
+    "des": "Join our Child Campaign for Eco-Nature Advocacy! Empowering young environmentalists to protect and cherish nature. Through education, activities, and community engagement, we inspire a generation of eco-conscious leaders. Together, let's create a sustainable and thriving planet for all living beings. 🌿🌎 #ChildCampaignForEcoNA #YoungEnvironmentalists",
+    "date": "25 FEB",
+    "views": "222",
+    "comments": "12",
+    "img": "https://i.ibb.co/M57fLjy/blog6.jpg"
+  }
 ]
