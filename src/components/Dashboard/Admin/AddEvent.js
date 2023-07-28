@@ -9,22 +9,34 @@ const AddEvent = () => {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
 
   useEffect(() => {
     if (resEventInfo?.status === "fulfilled") {
       console.log(resEventInfo?.status);
       toast.success("Successfully posted");
+      reset();
     } else if (resEventInfo?.status === "rejected") {
       console.log(resEventInfo?.status);
       const errorMessage = resEventInfo?.error?.data?.message;
       toast.error(errorMessage);
     }
-  }, [resEventInfo?.status, resEventInfo?.error?.data?.message]);
+  }, [resEventInfo?.status, resEventInfo?.error?.data?.message, reset]);
 
   const onSubmit = (data) => {
-    console.log(data);
-    postEvent(data)
+    //console.log(data);
+    const imgFile = data?.image;
+    const imageUrl = URL.createObjectURL(imgFile[0]);
+    const body = {
+      date: data?.date,
+      location: data?.location,
+      time: data?.time,
+      des: data?.description,
+      title: data?.title,
+      image: imageUrl,
+    };
+    postEvent(body);
   };
 
   return (
@@ -141,7 +153,7 @@ const AddEvent = () => {
         <div className="">
           <button
             type="submit"
-            className="btn bg-[#7abf18] text-white font-bold py-2 px-4 rounded"
+            className="btn bg-[#7abf18] text-white font-bold py-2 px-4 rounded cursor-pointer"
           >
             Add Event
           </button>

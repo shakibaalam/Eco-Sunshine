@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   useDeleteEventMutation,
   useEditEventMutation,
   useGetEventQuery,
 } from "../../../redux/EndPoints/ApiEndpoints";
+import Loading from "../../../shared/Loading";
+import { toast } from "react-toastify";
 
 // Sample data for demonstration purposes
 const events = [
@@ -14,9 +16,11 @@ const events = [
 ];
 
 const ManageEvent = () => {
-  const { data: allEvent, isLoading } = useGetEventQuery();
+  const { data: allEvent, isLoading, refetch } = useGetEventQuery();
   const [deleteEvent, resDeleteInfo] = useDeleteEventMutation();
   const [editEvent, resEditInfo] = useEditEventMutation();
+
+  // console.log(allEvent);
 
   const [editPopup, setEditPopup] = useState(null);
   const {
@@ -26,6 +30,30 @@ const ManageEvent = () => {
     formState: { errors },
   } = useForm();
 
+  useEffect(() => {
+    if (resDeleteInfo?.status === "fulfilled") {
+      console.log(resDeleteInfo?.status);
+      refetch();
+      toast.success("Successfully deleted");
+    } else if (resDeleteInfo?.status === "rejected") {
+      console.log(resDeleteInfo?.status);
+      const errorMessage = resDeleteInfo?.error?.data?.message;
+      toast.error(errorMessage);
+    }
+  }, [resDeleteInfo?.status, resDeleteInfo?.error?.data?.message, refetch]);
+
+  useEffect(() => {
+    if (resEditInfo?.status === "fulfilled") {
+      console.log(resEditInfo?.status);
+      refetch();
+      toast.success("Successfully edited");
+    } else if (resEditInfo?.status === "rejected") {
+      console.log(resEditInfo?.status);
+      const errorMessage = resEditInfo?.error?.data?.message;
+      toast.error(errorMessage);
+    }
+  }, [resEditInfo?.status, resEditInfo?.error?.data?.message, refetch]);
+
   const handleEdit = (event) => {
     // Open the edit popup and set initial values for the form
     setEditPopup(event);
@@ -33,6 +61,7 @@ const ManageEvent = () => {
       title: event.title,
       date: event.date,
       location: event.location,
+      time: event.time,
       // Add other fields as needed
     });
   };
@@ -43,12 +72,21 @@ const ManageEvent = () => {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
-    // Perform the editEvent mutation with the updated data
-    editEvent({
-      id: editPopup.id,
-      data: data,
-    });
+    const imgFile = data?.image;
+    const imageUrl = URL.createObjectURL(imgFile[0]);
+    // console.log(editPopup);
+    const formData = {
+      title: data.title,
+      date: data.date,
+      location: data.location,
+      time: data.time,
+      img: imageUrl,
+    };
+    const body = {
+      id: editPopup?._id,
+      data: formData,
+    };
+    editEvent(body);
     // Close the edit popup
     setEditPopup(null);
   };
@@ -56,41 +94,47 @@ const ManageEvent = () => {
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Manage Events</h2>
-      <table className="w-full border-collapse border">
-        <thead>
-          <tr>
-            <th className="border p-2">ID</th>
-            <th className="border p-2">Title</th>
-            <th className="border p-2">Date</th>
-            <th className="border p-2">Location</th>
-            <th className="border p-2">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {events.map((event) => (
-            <tr key={event.id}>
-              <td className="border p-2 text-center">{event.id}</td>
-              <td className="border p-2 text-center">{event.title}</td>
-              <td className="border p-2 text-center">{event.date}</td>
-              <td className="border p-2 text-center">{event.location}</td>
-              <td className="border p-2 text-center">
-                <button
-                  onClick={() => handleEdit(event)}
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded mr-2"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => handleDelete(event?.id)}
-                  className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded"
-                >
-                  Delete
-                </button>
-              </td>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <table className="w-full border-collapse border">
+          <thead>
+            <tr>
+              <th className="border p-2">ID</th>
+              <th className="border p-2">Title</th>
+              <th className="border p-2">Date</th>
+              <th className="border p-2">Location</th>
+              <th className="border p-2">Time</th>
+              <th className="border p-2">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {allEvent?.data?.map((event) => (
+              <tr key={event.id}>
+                <td className="border p-2 text-center">{event._id}</td>
+                <td className="border p-2 text-center">{event?.title}</td>
+                <td className="border p-2 text-center">{event?.date}</td>
+                <td className="border p-2 text-center">{event?.location}</td>
+                <td className="border p-2 text-center">{event?.time}</td>
+                <td className="border p-2 text-center">
+                  <button
+                    onClick={() => handleEdit(event)}
+                    className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded mr-2"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleDelete(event?._id)}
+                    className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
 
       {/* Edit Popup */}
       {editPopup && (
@@ -143,6 +187,40 @@ const ManageEvent = () => {
                   <span className="text-red-600">
                     {errors.location.message}
                   </span>
+                )}
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="time" className="block font-medium">
+                  Time
+                </label>
+                <input
+                  type="time"
+                  id="time"
+                  className="focus:outline-none w-full border-b border-[#7abf18]"
+                  {...register("time", {
+                    required: "Time is required",
+                  })}
+                />
+                {errors.time && (
+                  <span className="text-red-600">{errors.time.message}</span>
+                )}
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="image" className="block font-medium">
+                  Image
+                </label>
+                <input
+                  type="file"
+                  id="image"
+                  className="input input-bordered"
+                  {...register("image", {
+                    required: "Image is required",
+                  })}
+                />
+                {errors.image && (
+                  <span className="text-red-600">{errors.image.message}</span>
                 )}
               </div>
 

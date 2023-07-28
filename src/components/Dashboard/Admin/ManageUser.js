@@ -16,14 +16,13 @@ const users = [
 const ManageUser = () => {
   const { data: allUser, isLoading, refetch } = useGetAllUserQuery();
   const [changeRole, resInfo] = useUserRoleMutation();
-   console.log(allUser);
+  console.log(allUser);
 
   useEffect(() => {
     if (resInfo?.status === "fulfilled") {
       console.log(resInfo?.status);
       refetch();
       toast.success("Successfully make user admin");
-      //window.location.reload();
     } else if (resInfo?.status === "rejected") {
       console.log(resInfo?.status);
       const errorMessage = resInfo?.error?.data?.message;
@@ -32,11 +31,11 @@ const ManageUser = () => {
   }, [resInfo?.status, resInfo?.error?.data?.message, refetch]);
 
   const makeAdmin = (id) => {
-    console.log(id);
-    changeRole({
+    const data = {
       id,
       role: "ADMIN",
-    });
+    };
+    changeRole(data);
   };
   return (
     <div className="p-4">

@@ -34,11 +34,15 @@ export const ecoSlice = apiSlice.injectEndpoints({
 
     // edit a product by admin
     editProduct: builder.mutation({
-      query: ({ id, data }) => ({
-        url: `/api/v1/products/update-product/${id}`,
-        method: "PATCH",
-        body: data,
-      }),
+      query: (body) => {
+        const id = body?.id;
+        const data = body?.data;
+        return {
+          url: `/api/v1/products/update-product/${id}`,
+          method: "PATCH",
+          body: data,
+        };
+      },
       invalidatesTags: ["eco"],
     }),
 
@@ -76,7 +80,7 @@ export const ecoSlice = apiSlice.injectEndpoints({
     // post a blog by admin
     postBlog: builder.mutation({
       query: (data) => ({
-        url: `/api/v1/products/create-product`,
+        url: `/api/v1/blog/create-blog`,
         method: "POST",
         body: data,
       }),
@@ -85,11 +89,15 @@ export const ecoSlice = apiSlice.injectEndpoints({
 
     // edit a blog by admin
     editBlog: builder.mutation({
-      query: ({ id, data }) => ({
-        url: `/api/v1/blog/update-blog/${id}`,
-        method: "PATCH",
-        body: data,
-      }),
+      query: (body) => {
+        const id = body?.id;
+        const data = body?.data;
+        return {
+          url: `/api/v1/blog/update-blog/${id}`,
+          method: "PATCH",
+          body: data,
+        };
+      },
       invalidatesTags: ["eco"],
     }),
 
@@ -109,7 +117,7 @@ export const ecoSlice = apiSlice.injectEndpoints({
     // get all events
     getEvent: builder.query({
       query: () => ({
-        url: `/api/v1/products/get-product`,
+        url: `/api/v1/event/get-event`,
         method: "GET",
       }),
       providesTags: ["eco"],
@@ -127,7 +135,7 @@ export const ecoSlice = apiSlice.injectEndpoints({
     // post an event by admin
     postEvent: builder.mutation({
       query: (data) => ({
-        url: `/api/v1/products/create-product`,
+        url: `/api/v1/event/create-event`,
         method: "POST",
         body: data,
       }),
@@ -136,11 +144,15 @@ export const ecoSlice = apiSlice.injectEndpoints({
 
     // edit an Event by admin
     editEvent: builder.mutation({
-      query: ({ id, data }) => ({
-        url: `/api/v1/products/update-product/${id}`,
-        method: "PATCH",
-        body: data,
-      }),
+      query: (body) => {
+        const id = body?.id;
+        const data = body?.data;
+        return {
+          url: `/api/v1/event/update-event/${id}`,
+          method: "PATCH",
+          body: data,
+        };
+      },
       invalidatesTags: ["eco"],
     }),
 
@@ -148,7 +160,7 @@ export const ecoSlice = apiSlice.injectEndpoints({
     deleteEvent: builder.mutation({
       query: (id) => {
         return {
-          url: `/api/v1/products/delete-product/${id}`,
+          url: `/api/v1/event/delete-event/${id}`,
           method: "DELETE",
         };
       },
@@ -160,7 +172,7 @@ export const ecoSlice = apiSlice.injectEndpoints({
     // get all Campaign
     getCampaign: builder.query({
       query: () => ({
-        url: `/api/v1/products/get-product`,
+        url: `/api/v1/campaign/get-campaign`,
         method: "GET",
       }),
       providesTags: ["eco"],
@@ -169,7 +181,7 @@ export const ecoSlice = apiSlice.injectEndpoints({
     // Campaign get by id
     getCampaignById: builder.query({
       query: (id) => ({
-        url: `/api/v1/products/get-product/${id}`,
+        url: `/api/v1/campaign/get-campaign/${id}`,
         method: "GET",
       }),
       providesTags: ["eco"],
@@ -178,7 +190,7 @@ export const ecoSlice = apiSlice.injectEndpoints({
     // post an event by admin
     postCampaign: builder.mutation({
       query: (data) => ({
-        url: `/api/v1/products/create-product`,
+        url: `/api/v1/campaign/create-campaign`,
         method: "POST",
         body: data,
       }),
@@ -187,11 +199,15 @@ export const ecoSlice = apiSlice.injectEndpoints({
 
     // edit an Campaign by admin
     editCampaign: builder.mutation({
-      query: ({ id, data }) => ({
-        url: `/api/v1/products/update-product/${id}`,
-        method: "PATCH",
-        body: data,
-      }),
+      query: (body) => {
+        const id = body?.id;
+        const data = body?.data;
+        return {
+          url: `/api/v1/campaign/update-campaign/${id}`,
+          method: "PATCH",
+          body: data,
+        };
+      },
       invalidatesTags: ["eco"],
     }),
 
@@ -199,7 +215,7 @@ export const ecoSlice = apiSlice.injectEndpoints({
     deleteCampaign: builder.mutation({
       query: (id) => {
         return {
-          url: `/api/v1/products/delete-product/${id}`,
+          url: `/api/v1/campaign/delete-campaign/${id}`,
           method: "DELETE",
         };
       },
@@ -219,14 +235,19 @@ export const ecoSlice = apiSlice.injectEndpoints({
 
     // change user role
     userRole: builder.mutation({
-      query: ({ id, data }) => (
-        {
-        url: `/api/v1/auth/update-user-role/${id}`,
-        method: "PATCH",
-        body: data,
-      }),
+      query: (data) => {
+        const id = data.id;
+        const body = { role: data.role };
+        return {
+          url: `/api/v1/auth/update-user-role/${id}`,
+          method: "PATCH",
+          body,
+        };
+      },
       invalidatesTags: ["eco"],
     }),
+
+    // ......................................... All Order ...............................................//
   }),
 });
 

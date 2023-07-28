@@ -8,23 +8,32 @@ const AddBlog = () => {
   const {
     register,
     formState: { errors },
-    handleSubmit,
+    handleSubmit,reset
   } = useForm();
 
   useEffect(() => {
     if (resBlogInfo?.status === "fulfilled") {
       console.log(resBlogInfo?.status);
       toast.success("Successfully posted");
+      reset();
     } else if (resBlogInfo?.status === "rejected") {
       console.log(resBlogInfo?.status);
       const errorMessage = resBlogInfo?.error?.data?.message;
       toast.error(errorMessage);
     }
-  }, [resBlogInfo?.status, resBlogInfo?.error?.data?.message]);
+  }, [resBlogInfo?.status, resBlogInfo?.error?.data?.message,reset]);
 
   const onSubmit = (data) => {
-    console.log(data);
-    postBlog(data);
+    //console.log(data);
+    const imgFile = data?.img;
+    const imageUrl = URL.createObjectURL(imgFile[0]);
+    const body = {
+      author: data?.author,
+      content: data?.content,
+      title: data?.title,
+      img: imageUrl,
+    };
+    postBlog(body);
   };
 
   return (
@@ -100,7 +109,7 @@ const AddBlog = () => {
         </div>
 
         <input
-          className="btn bg-[#7abf18] text-white font-bold py-2 px-4 rounded "
+          className="btn bg-[#7abf18] text-white font-bold py-2 px-4 rounded cursor-pointer"
           value="Submit"
           type="submit"
         />

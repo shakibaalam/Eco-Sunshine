@@ -8,23 +8,37 @@ const AddCampaign = () => {
   const {
     register,
     formState: { errors },
-    handleSubmit,
+    handleSubmit,reset
   } = useForm();
 
   useEffect(() => {
     if (resCampaignInfo?.status === "fulfilled") {
       console.log(resCampaignInfo?.status);
       toast.success("Successfully posted");
+      reset();
     } else if (resCampaignInfo?.status === "rejected") {
       console.log(resCampaignInfo?.status);
       const errorMessage = resCampaignInfo?.error?.data?.message;
       toast.error(errorMessage);
     }
-  }, [resCampaignInfo?.status, resCampaignInfo?.error?.data?.message]);
+  }, [resCampaignInfo?.status, resCampaignInfo?.error?.data?.message,reset]);
 
   const onSubmit = (data) => {
-    console.log(data);
-    postCampaign(data);
+    //console.log(data);
+    const imgFile = data?.image;
+    const imageUrl = URL.createObjectURL(imgFile[0]);
+    const body = {
+      title: data?.title,
+      des: data?.description,
+      targetAmount: data?.targetAmount,
+      endDate: data?.endDate,
+      startDate: data?.startDate,
+      date: data?.date,
+      location: data?.location,
+      time: data?.time,
+      img: imageUrl,
+    };
+    postCampaign(body);
   };
 
   return (
@@ -87,6 +101,22 @@ const AddCampaign = () => {
           )}
         </div>
 
+        <div className="flex flex-col gap-2">
+          <label htmlFor="startDate" className="font-medium">
+            Start Date
+          </label>
+          <input
+            type="date"
+            id="startDate"
+            className="focus:outline-none border-b border-[#7abf18]"
+            {...register("startDate", {
+              required: "End date is required",
+            })}
+          />
+          {errors.startDate && (
+            <span className="text-red-600">{errors.startDate.message}</span>
+          )}
+        </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="endDate" className="font-medium">
             End Date

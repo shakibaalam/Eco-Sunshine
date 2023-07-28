@@ -16,16 +16,27 @@ const AddProduct = () => {
     if (resProductInfo?.status === "fulfilled") {
       console.log(resProductInfo?.status);
       toast.success("Successfully posted");
+      reset();
     } else if (resProductInfo?.status === "rejected") {
       console.log(resProductInfo?.status);
       const errorMessage = resProductInfo?.error?.data?.message;
       toast.error(errorMessage);
     }
-  }, [resProductInfo?.status, resProductInfo?.error?.data?.message]);
+  }, [resProductInfo?.status, resProductInfo?.error?.data?.message,reset]);
 
   const onSubmit = (data) => {
-    console.log(data);
-    postProduct(data);
+    //console.log(data);
+    const imgFile = data?.image;
+    const imageUrl = URL.createObjectURL(imgFile[0]);
+    const body = {
+      price: data?.price,
+      des: data?.desc,
+      name: data?.name,
+      img: imageUrl,
+      minimumQu:data?.quantity,
+      availableQu:data?.available
+    };
+    postProduct(body);
   };
 
   return (
