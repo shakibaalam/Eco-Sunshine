@@ -29,6 +29,7 @@ import ManageUser from "../components/Dashboard/Admin/ManageUser";
 import ManageEvent from "../components/Dashboard/Admin/ManageEvent";
 import ManageOrder from "../components/Dashboard/Admin/ManageOrder";
 import ManageCampaign from "../components/Dashboard/Admin/ManageCampaign";
+import RequireAdmin from "../require/RequireAdmin";
 
 const router = createBrowserRouter([
   {
@@ -49,26 +50,98 @@ const router = createBrowserRouter([
       { path: "productDetails/:id", element: <ProductDetails /> },
       { path: "login", element: <LogInForm /> },
       { path: "signup", element: <RegistrationForm /> },
-      
     ],
   },
   {
     path: "/dashboard",
-    // element: <RequireAuth element={<Dashboard />} />,
-    element: <Dashboard />,
+    element: (
+      <RequireAuth>
+        <Dashboard />
+      </RequireAuth>
+    ),
     children: [
       { path: "my-order", element: <UserOrder /> },
       { path: "my-donation", element: <MyDoantion /> },
-      { path: "add-product", element: <AddProduct /> },
-      { path: "add-blog", element: <AddBlog /> },
-      { path: "add-event", element: <AddEvent /> },
-      { path: "add-campaign", element: <AddCampaign /> },
-      { path: "manage-blog", element: <ManageBlog /> },
-      { path: "manage-product", element: <ManageProduct /> },
-      { path: "manage-event", element: <ManageEvent /> },
-      { path: "manage-campaign", element: <ManageCampaign /> },
-      { path: "manage-user", element: <ManageUser /> },
-      { path: "manage-order", element: <ManageOrder /> },
+      {
+        path: "add-product",
+        element: (
+          <RequireAdmin>
+            <AddProduct />
+          </RequireAdmin>
+        ),
+      },
+      {
+        path: "add-blog",
+        element: (
+          <RequireAdmin>
+            <AddBlog />
+          </RequireAdmin>
+        ),
+      },
+      {
+        path: "add-event",
+        element: (
+          <RequireAdmin>
+            <AddEvent />
+          </RequireAdmin>
+        ),
+      },
+      {
+        path: "add-campaign",
+        element: (
+          <RequireAdmin>
+            <AddCampaign />{" "}
+          </RequireAdmin>
+        ),
+      },
+      {
+        path: "manage-blog",
+        element: (
+          <RequireAdmin>
+            <ManageBlog />
+          </RequireAdmin>
+        ),
+      },
+      {
+        path: "manage-product",
+        element: (
+          <RequireAdmin>
+            <ManageProduct />
+          </RequireAdmin>
+        ),
+      },
+      {
+        path: "manage-event",
+        element: (
+          <RequireAdmin>
+            <ManageEvent />
+          </RequireAdmin>
+        ),
+      },
+      {
+        path: "manage-campaign",
+        element: (
+          <RequireAdmin>
+            <ManageCampaign />
+          </RequireAdmin>
+        ),
+      },
+      {
+        path: "manage-user",
+        element: (
+          <RequireAdmin>
+            <ManageUser />
+          </RequireAdmin>
+        ),
+      },
+      {
+        path: "manage-order",
+        element: (
+          <RequireAdmin>
+            <ManageOrder />
+          </RequireAdmin>
+        ),
+      },
     ],
   },
   {

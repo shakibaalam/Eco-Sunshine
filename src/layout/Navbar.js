@@ -80,64 +80,52 @@ const Navbar = () => {
       <nav className="bg-[#7abf18] uppercase lg:lg:w-4/5 xl:w-3/4 mx-auto py-5  font-semibold flex justify-around items-center relative z-10 rounded-sm">
         <Link
           to="/"
-          className={
-            selectedLink === "" ? " text-white font-bold  " : ""
-          }
+          className={selectedLink === "" ? " text-white font-bold  " : ""}
         >
           Home
         </Link>
         <Link
           to="/about"
-          className={
-            selectedLink === "about"
-              ? "  text-white font-bold "
-              : ""
-          }
+          className={selectedLink === "about" ? "  text-white font-bold " : ""}
         >
           About
         </Link>
         <Link
           to="/blog"
-          className={
-            selectedLink === "blog"
-              ? " text-white font-bold "
-              : ""
-          }
+          className={selectedLink === "blog" ? " text-white font-bold " : ""}
         >
           Blog
         </Link>
         <Link
           to="/events"
-          className={
-            selectedLink === "events"
-              ? " text-white font-bold "
-              : ""
-          }
+          className={selectedLink === "events" ? " text-white font-bold " : ""}
         >
           Events
         </Link>
         <Link
           to="/campaign"
           className={
-            selectedLink === "campaign"
-              ? " text-white font-bold "
-              : ""
+            selectedLink === "campaign" ? " text-white font-bold " : ""
           }
         >
           Campaign & Causes
         </Link>
         <Link
           to="/product"
-          className={
-            selectedLink === "product"
-              ? " text-white font-bold "
-              : ""
-          }
+          className={selectedLink === "product" ? " text-white font-bold " : ""}
         >
           Shop
         </Link>
 
-        {user && <Link to="/dashboard/my-order">Dashboard</Link>}
+        {user && (
+          <Link
+            to={`/dashboard/${
+              user?.role === "USER" ? "my-order" : "manage-order"
+            }`}
+          >
+            Dashboard
+          </Link>
+        )}
 
         {user && <span className="">{user?.name}</span>}
 
