@@ -10,9 +10,7 @@ import { toast } from "react-toastify";
 
 const AllProducts = ({ p, shop }) => {
   const { img, _id, name, des, price } = p;
-  // const { data: getCart, isLoading, refetch } = useGetCartByIdQuery();
   const [addCart, resInfo] = usePostCartMutation();
-  // console.log(getCart);
 
   useEffect(() => {
     if (resInfo?.status === "fulfilled") {
