@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import HeadTitle from "../../shared/HeadTitle";
 import AllBlogs from "../Blog/AllBlogs";
 import { useGetBlogQuery } from "../../redux/EndPoints/ApiEndpoints";
@@ -26,7 +26,7 @@ const Blogs = () => {
       ) : (
         <div className="lg:w-[90%] xl:w-[85%] mx-auto">
           <div className="mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 ">
-            {reversedBlog.slice(0, 3).map((b) => (
+            {reversedBlog?.slice(0, 3)?.map((b) => (
               <AllBlogs b={b} key={b?.id} />
             ))}
           </div>
