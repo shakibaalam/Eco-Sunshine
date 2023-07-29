@@ -247,7 +247,47 @@ export const ecoSlice = apiSlice.injectEndpoints({
       invalidatesTags: ["eco"],
     }),
 
-    // ......................................... All Order ...............................................//
+    // ......................................... Add to cart ...............................................//
+
+    // get all Cart
+    getCart: builder.query({
+      query: () => ({
+        url: `/api/v1/products/get-to-cart`,
+        method: "GET",
+      }),
+      providesTags: ["eco"],
+    }),
+
+    // Campaign get by id
+    getCartById: builder.query({
+      query: (id) => ({
+        url: `/api/v1/campaign/get-campaign/${id}`,
+        method: "GET",
+      }),
+      providesTags: ["eco"],
+    }),
+
+    // post add to cart
+    postCart: builder.mutation({
+      query: (id) => {
+        return {
+          url: `/api/v1/products/add-to-cart/${id}`,
+          method: "POST",
+        };
+      },
+      invalidatesTags: ["eco"],
+    }),
+
+    // delete a product cart by admin
+    deleteCart: builder.mutation({
+      query: (id) => {
+        return {
+          url: `/api/v1/products/delete-to-cart/${id}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: ["eco"],
+    }),
   }),
 });
 
@@ -274,4 +314,8 @@ export const {
   usePostCampaignMutation,
   useGetAllUserQuery,
   useUserRoleMutation,
+  useGetCartQuery,
+  useGetCartByIdQuery,
+  useDeleteCartMutation,
+  usePostCartMutation,
 } = ecoSlice;

@@ -90,7 +90,7 @@ const router = createBrowserRouter([
         path: "add-campaign",
         element: (
           <RequireAdmin>
-            <AddCampaign />{" "}
+            <AddCampaign />
           </RequireAdmin>
         ),
       },

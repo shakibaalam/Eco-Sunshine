@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Donation = () => {
-    const [selectedAmount, setSelectedAmount] = useState(null);
+  const [selectedAmount, setSelectedAmount] = useState(null);
   const [customAmount, setCustomAmount] = useState("");
 
   const handleCardClick = (amount) => {

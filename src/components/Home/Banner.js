@@ -103,7 +103,7 @@ const Banner = () => {
                   : "opacity-0"
               }`}
             >
-              <div className="block">
+              {/* <div className="block">
                 {item?.img1 && item?.img2 && item?.img3 && item?.img4 && (
                   <div className="flex gap-4 items-center ">
                     <img
@@ -128,18 +128,14 @@ const Banner = () => {
                     />
                   </div>
                 )}
-              </div>
-              <div className="flex gap-4">
-                <button
-                  onClick={() => setPopup(true)}
-                  className="bg-[#7abf18] rounded px-6 py-1 border-2 border-[#7abf18] uppercase font-bold text-white"
-                >
-                  Donate us
-                </button>
-                <button className="px-6 py-1 uppercase rounded font-bold text-white border-2 border-white">
-                  Contact us
-                </button>
-              </div>
+              </div> */}
+
+              <button className="bg-[#7abf18] rounded px-6 py-1 border-2 border-[#7abf18] uppercase font-bold text-white">
+                <span onClick={() => setPopup(true)}>Donate us</span>
+              </button>
+              <button className="px-6 py-1 uppercase rounded font-bold text-white border-2 border-white">
+                Contact us
+              </button>
             </div>
           </div>
         </div>

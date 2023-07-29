@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import logo from "../img/logo.png";
 import { logOut } from "../redux/Slice/authSlice";
 import Donation from "../shared/Donation";
+import Cart from "../components/Cart/Cart";
 
 const Navbar = () => {
   const location = useLocation();
@@ -50,7 +51,7 @@ const Navbar = () => {
 
   return (
     <div className="">
-      <div className=" flex justify-between lg:w-4/5 xl:w-3/4 mx-auto py-5">
+      <div className=" flex justify-between lg:w-[90%] xl:w-[85%] mx-auto py-5">
         <div className=" flex items-center gap-5">
           <img className="w-16 h-16 rounded-full" src={logo} alt="" />
           <h1 className="text-3xl  font-bold ">
@@ -73,11 +74,11 @@ const Navbar = () => {
             <GrTwitter className=" hover:text-[#7abf18]" />
           </div>
           <span>
-            <FaShoppingCart className=" hover:text-[#7abf18]" />
+            <Cart />
           </span>
         </div>
       </div>
-      <nav className="bg-[#7abf18] uppercase lg:lg:w-4/5 xl:w-3/4 mx-auto py-5  font-semibold flex justify-around items-center relative z-10 rounded-sm">
+      <nav className="bg-[#7abf18] uppercase lg:w-[90%] xl:w-[85%] mx-auto py-5  font-semibold flex justify-around items-center relative z-10 rounded-sm">
         <Link
           to="/"
           className={selectedLink === "" ? " text-white font-bold  " : ""}
