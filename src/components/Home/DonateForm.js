@@ -47,7 +47,7 @@ const DonateForm = () => {
 
   return (
     <div
-      className="w-full relative flex justify-between px-14 mt-20 "
+      className="w-full relative flex justify-between px-14 "
       style={{
         backgroundImage: `url(${banner})`,
         backgroundSize: "cover",
@@ -122,14 +122,14 @@ const DonateForm = () => {
                     {d}
                   </option>
                 ))}
-                <option value="$ 1000" className="text-gray-700">
+                <option value="$ Amount" className="text-gray-700">
                   Write your own amount
                 </option>
               </select>
 
               {selectedDonate === "$ Amount" && (
                 <input
-                  type="text"
+                  type="text" placeholder="Write your own amount"
                   {...register("customOption", {
                     required: "Custom amount is required",
                   })}

@@ -19,7 +19,7 @@ const EcoCauses = () => {
     navigate(`/campaign`);
   };
   return (
-    <div className=" mt-20 ">
+    <div className=" my-20 ">
       <HeadTitle title="ECO CAUSES" />
       {isLoading ? (
         <Loading />

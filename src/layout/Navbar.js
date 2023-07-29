@@ -13,6 +13,7 @@ import logo from "../img/logo.png";
 import { logOut } from "../redux/Slice/authSlice";
 import Donation from "../shared/Donation";
 import Cart from "../components/Cart/Cart";
+import DonateForm from "../components/Home/DonateForm";
 
 const Navbar = () => {
   const location = useLocation();
@@ -158,7 +159,7 @@ const Navbar = () => {
 
       {isPopup && (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white rounded-lg p-6 w-1/2">
+          <div className="bg-white rounded-lg p-6 w-1/2 max-h-[80vh] overflow-y-auto ecoScroll">
             <div className="bg-[#7abf18] text-white w-full flex justify-between items-center p-6">
               <h2 className="text-xl font-semibold">DONATE </h2>
               <FaWindowClose
@@ -166,7 +167,8 @@ const Navbar = () => {
                 onClick={() => setPopup(false)}
               />
             </div>
-            <Donation />
+            {/* <Donation /> */}
+            <DonateForm/>
           </div>
         </div>
       )}

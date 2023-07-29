@@ -3,30 +3,24 @@ import Banner from "../shared/Banner";
 import bannerImg from "../img/aboutBanner.jpg";
 import AllBlogs from "../components/Blog/AllBlogs";
 import { useGetBlogQuery } from "../redux/EndPoints/ApiEndpoints";
+import Loading from "../shared/Loading";
 
 const Blog = () => {
   const itemsPerPage = 3; // Number of blogs to show per page
 
   const { data: ecoBlog, isLoading } = useGetBlogQuery();
+  const [currentPage, setCurrentPage] = useState(1);
   //console.log(ecoBlog);
 
-  const [blogs, setBlogs] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  useEffect(() => {
-    fetch("blogs.json")
-      .then((res) => res.json())
-      .then((data) => setBlogs(data))
-      .catch((error) => console.error(error));
-  }, []);
+  const reversedBlog = ecoBlog?.data?.slice().reverse();
 
   // Calculate the total number of pages
-  const totalPages = Math.ceil(blogs.length / itemsPerPage);
+  const totalPages = Math.ceil(reversedBlog?.length / itemsPerPage);
 
   // Get the current blogs to display based on the current page
   const indexOfLastBlog = currentPage * itemsPerPage;
   const indexOfFirstBlog = indexOfLastBlog - itemsPerPage;
-  const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
+  const currentBlogs = reversedBlog?.slice(indexOfFirstBlog, indexOfLastBlog);
 
   // Function to handle page change
   const handlePageChange = (pageNumber) => {
@@ -37,11 +31,15 @@ const Blog = () => {
     <div>
       <Banner banner={bannerImg} title="Blog" />
 
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 lg:mx-28 my-10">
-        {currentBlogs.map((b) => (
-          <AllBlogs b={b} key={b?.id} />
-        ))}
-      </div>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 lg:w-[90%] xl:w-[85%] mx-auto">
+          {currentBlogs.slice(0, 3).map((b) => (
+            <AllBlogs b={b} key={b?.id} />
+          ))}
+        </div>
+      )}
 
       {/* Pagination Buttons */}
       <div className="flex justify-center items-center my-20">
