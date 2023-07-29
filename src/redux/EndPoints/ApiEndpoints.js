@@ -126,7 +126,7 @@ export const ecoSlice = apiSlice.injectEndpoints({
     // event get by id
     getEventById: builder.query({
       query: (id) => ({
-        url: `/api/v1/products/get-product/${id}`,
+        url: `/api/v1/event/get-event/${id}`,
         method: "GET",
       }),
       providesTags: ["eco"],

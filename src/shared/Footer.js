@@ -32,7 +32,7 @@ const Footer = () => {
       <div>
         <h2 className="mb-10 text-lg font-bold ">RECENT BLOG</h2>
         <div>
-          {reversedBlog.slice(0, 3).map((b) => (
+          {reversedBlog?.slice(0, 3)?.map((b) => (
             <div key={b?.id} className="flex gap-5 mb-3">
               <img src={b?.img} className="w-20 h-16" alt="" />
               <div>

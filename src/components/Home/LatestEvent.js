@@ -8,7 +8,7 @@ import Loading from "../../shared/Loading";
 const LatestEvent = () => {
   const [events, setEvents] = useState([]);
   const { data: allEvents, isLoading } = useGetEventQuery();
-  console.log(allEvents);
+  //console.log(allEvents);
 
   const reversedEvents = allEvents?.data?.slice().reverse();
 

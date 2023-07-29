@@ -6,7 +6,7 @@ import { useGetBlogQuery } from "../redux/EndPoints/ApiEndpoints";
 import Loading from "../shared/Loading";
 
 const Blog = () => {
-  const itemsPerPage = 3; // Number of blogs to show per page
+  const itemsPerPage = 3; 
 
   const { data: ecoBlog, isLoading } = useGetBlogQuery();
   const [currentPage, setCurrentPage] = useState(1);
