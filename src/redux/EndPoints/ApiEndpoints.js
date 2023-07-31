@@ -288,6 +288,19 @@ export const ecoSlice = apiSlice.injectEndpoints({
       },
       invalidatesTags: ["eco"],
     }),
+
+    // ......................................... customer payment id create ...............................................//
+
+    // post add to cart
+    createCustomerId: builder.mutation({
+      query: () => {
+        return {
+          url: `/api/v1/products/create-customer`,
+          method: "POST",
+        };
+      },
+      invalidatesTags: ["eco"],
+    }),
   }),
 });
 
@@ -318,4 +331,5 @@ export const {
   useGetCartByIdQuery,
   useDeleteCartMutation,
   usePostCartMutation,
+  useCreateCustomerIdMutation,
 } = ecoSlice;

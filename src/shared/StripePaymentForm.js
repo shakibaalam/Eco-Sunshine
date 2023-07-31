@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
+import { URL } from "../redux/EndPoints/fetchbasequery";
+import { toast } from "react-toastify";
 
-const StripePaymentForm = () => {
+const StripePaymentForm = ({ isStripe, cartIds, totalPrice, setStripe }) => {
   const [loading, setLoading] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
 
   const handleSubmit = async (event) => {
+    const accessToken = localStorage.getItem("accessToken");
     event.preventDefault();
     setLoading(true);
 
@@ -22,17 +25,27 @@ const StripePaymentForm = () => {
       }
 
       const { data } = await axios.post(
-        "http://localhost:5000/api/v1/products/payment-recive",
+        `${URL}api/v1/products/payment-receive`,
         {
-          amount: 100,
+          amount: totalPrice * 100,
           currency: "USD",
-          paymentMethodId: paymentMethod.id,
-          cartDetails: ["64c4969947227f09e5381152"], // Add cart id here
+          paymentMethodId: paymentMethod?.id,
+          customerId: isStripe,
+          cartDetails: cartIds, // Add cart id here
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
         }
       );
 
       console.log(data); // Handle successful payment response
-      setLoading(false);
+      if (data?.success === true) {
+        toast.success("Successfully payment completed! Thank you.");
+        setLoading(false);
+        setStripe(false);
+      }
     } catch (error) {
       console.error(error);
       setLoading(false);
@@ -42,7 +55,7 @@ const StripePaymentForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="">
-      <div className="my-4 w-full mx-2  md:mx-auto bg-slate-900 backdrop-filter backdrop-blur-sm p-10 rounded">
+      <div className="my-4 w-full mx-2  md:mx-auto bg-slate-100 backdrop-filter backdrop-blur-sm p-10 rounded">
         <CardElement
           options={{
             style: {

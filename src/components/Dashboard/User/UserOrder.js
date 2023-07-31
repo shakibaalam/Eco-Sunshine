@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  useCreateCustomerIdMutation,
   useDeleteCartMutation,
   useGetCartQuery,
 } from "../../../redux/EndPoints/ApiEndpoints";
@@ -11,17 +12,24 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import StripePaymentForm from "../../../shared/StripePaymentForm";
 
-const stripePromise = loadStripe("your_stripe_publishable_key");
+const stripePromise = loadStripe('pk_test_51NYRyfKTzmdU21JYmYlQ3VYe2clSCUfGBAcwtmK3UsLaIK48eCxuM749imCD4UCsJMuQtRY1YoUmhAIUKRqRT46c007ivjL7C7');
 
 const UserOrder = () => {
   const { data: allCartOfUser, isLoading, refetch } = useGetCartQuery();
   const [deleteCart, resInfo] = useDeleteCartMutation();
+  const [customerId, resIdInfo] = useCreateCustomerIdMutation();
 
   const [totalPrice, setTotal] = useState();
-  const [isStripe, setStripe] = useState(false);
+  const [isStripe, setStripe] = useState(null);
+  const [cartIds, setCartIds] = useState([]);
+
+  console.log(totalPrice*100);
 
   useEffect(() => {
     if (allCartOfUser?.data?.length > 0) {
+      const ids = allCartOfUser?.data?.map((order) => order?._id);
+      setCartIds(ids);
+
       const total = allCartOfUser?.data?.reduce(
         (total, order) => total + parseFloat(order?.price),
         0
@@ -41,12 +49,20 @@ const UserOrder = () => {
     }
   }, [resInfo, refetch]);
 
+  useEffect(() => {
+    console.log(resIdInfo);
+    if (resIdInfo?.status === "fulfilled") {
+      
+      setStripe(resIdInfo?.data?.customerId);
+    }
+  }, [resIdInfo, refetch]);
+
   const handleDelete = (id) => {
     deleteCart(id);
   };
 
   const handlePay = () => {
-    setStripe(true);
+    customerId();
   };
 
   return (
@@ -120,8 +136,8 @@ const UserOrder = () => {
           </div>
 
           {isStripe && (
-            <Elements stripe={stripePromise}>
-              <StripePaymentForm />
+            <Elements  stripe={stripePromise}>
+              <StripePaymentForm isStripe={isStripe} setStripe={setStripe} cartIds={cartIds} totalPrice={totalPrice}/>
             </Elements>
           )}
         </div>
