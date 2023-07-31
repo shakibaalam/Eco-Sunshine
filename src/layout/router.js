@@ -17,8 +17,8 @@ import LogInForm from "../pages/LogInForm";
 import RegistrationForm from "../pages/RegistrationForm";
 import RequireAuth from "../require/RequireAuth";
 import Dashboard from "../pages/Dashboard";
-import UserOrder from "../components/Dashboard/UserOrder";
-import MyDoantion from "../components/Dashboard/MyDoantion";
+import UserOrder from "../components/Dashboard/User/UserOrder";
+import MyDoantion from "../components/Dashboard/User/MyDoantion";
 import AddProduct from "../components/Dashboard/Admin/AddProduct";
 import AddBlog from "../components/Dashboard/Admin/AddBlog";
 import AddEvent from "../components/Dashboard/Admin/AddEvent";
@@ -30,6 +30,8 @@ import ManageEvent from "../components/Dashboard/Admin/ManageEvent";
 import ManageOrder from "../components/Dashboard/Admin/ManageOrder";
 import ManageCampaign from "../components/Dashboard/Admin/ManageCampaign";
 import RequireAdmin from "../require/RequireAdmin";
+import MyEvent from "../components/Dashboard/User/MyEvent";
+import PaymentHistory from "../components/Dashboard/User/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -62,6 +64,8 @@ const router = createBrowserRouter([
     children: [
       { path: "my-order", element: <UserOrder /> },
       { path: "my-donation", element: <MyDoantion /> },
+      { path: "my-event", element: <MyEvent /> },
+      { path: "payment-history", element: <PaymentHistory /> },
       {
         path: "add-product",
         element: (

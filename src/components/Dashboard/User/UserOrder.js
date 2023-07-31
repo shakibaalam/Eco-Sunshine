@@ -2,20 +2,23 @@ import React from "react";
 import {
   useDeleteCartMutation,
   useGetCartQuery,
-} from "../../redux/EndPoints/ApiEndpoints";
+} from "../../../redux/EndPoints/ApiEndpoints";
 import { AiFillDelete } from "react-icons/ai";
-import Loading from "../../shared/Loading";
-import { useEffect } from "react";
-import { useState } from "react";
+import Loading from "../../../shared/Loading";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import StripePaymentForm from "../../../shared/StripePaymentForm";
+
+const stripePromise = loadStripe("your_stripe_publishable_key");
 
 const UserOrder = () => {
   const { data: allCartOfUser, isLoading, refetch } = useGetCartQuery();
   const [deleteCart, resInfo] = useDeleteCartMutation();
 
   const [totalPrice, setTotal] = useState();
-
-  console.log(allCartOfUser);
+  const [isStripe, setStripe] = useState(false);
 
   useEffect(() => {
     if (allCartOfUser?.data?.length > 0) {
@@ -41,8 +44,9 @@ const UserOrder = () => {
   const handleDelete = (id) => {
     deleteCart(id);
   };
+
   const handlePay = () => {
-   
+    setStripe(true);
   };
 
   return (
@@ -99,16 +103,27 @@ const UserOrder = () => {
                     colSpan="2"
                     className="px-4 py-2 border text-center border-[#7abf18] font-semibold"
                   >
-                    {totalPrice} {/* Display the total price */}
+                    {totalPrice}
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <div className=" text-right mt-5">
-            <button onClick={handlePay} className="bg-[#7abf18] px-6 py-2 rounded font-bold text-white">Pay now</button>
+          <div className="text-right mt-5">
+            <button
+              onClick={handlePay}
+              className="bg-[#7abf18] px-6 py-2 rounded font-bold text-white"
+            >
+              Pay now
+            </button>
           </div>
+
+          {isStripe && (
+            <Elements stripe={stripePromise}>
+              <StripePaymentForm />
+            </Elements>
+          )}
         </div>
       )}
     </div>

@@ -3,8 +3,13 @@ import { useForm } from "react-hook-form";
 import banner from "../../img/form-bg.jpg";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Elements } from "@stripe/react-stripe-js";
+import StripePaymentForm from "../../shared/StripePaymentForm";
+import { loadStripe } from "@stripe/stripe-js";
 
 const DonateForm = () => {
+  const stripePromise = loadStripe("your_stripe_publishable_key");
+  const [isStripe, setStripe] = useState(false);
   const {
     handleSubmit,
     register,
@@ -41,7 +46,7 @@ const DonateForm = () => {
     if (!user) {
       navigate("/login");
     } else {
-      console.log("logged in");
+      setStripe(true);
     }
   };
 
@@ -129,7 +134,8 @@ const DonateForm = () => {
 
               {selectedDonate === "$ Amount" && (
                 <input
-                  type="text" placeholder="Write your own amount"
+                  type="text"
+                  placeholder="Write your own amount"
                   {...register("customOption", {
                     required: "Custom amount is required",
                   })}
@@ -149,10 +155,17 @@ const DonateForm = () => {
               Donate
             </button>
           </form>
+
+          {isStripe && (
+            <Elements stripe={stripePromise}>
+              <StripePaymentForm />
+            </Elements>
+          )}
         </div>
       </div>
 
-      <div></div>
+
+
     </div>
   );
 };

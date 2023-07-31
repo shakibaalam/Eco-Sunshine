@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const AllCampaign = ({ campaign }) => {
-  const startDateParts = campaign?.startDate.split("-");
-  const endDateParts = campaign?.endDate.split("-");
+  const startDateParts = campaign?.startDate?.split("-");
+  const endDateParts = campaign?.endDate?.split("-");
 
   // Create Date objects from the parsed parts
   const startDate = new Date(

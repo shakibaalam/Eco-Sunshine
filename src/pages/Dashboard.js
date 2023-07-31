@@ -20,8 +20,8 @@ const Dashboard = () => {
   //console.log(user);
 
   useEffect(() => {
-    const currentPath = location.pathname;
-    setSelectedSubmenu(currentPath.split("/dashboard/")[1] || "my-order");
+    const currentPath = location?.pathname;
+    setSelectedSubmenu(currentPath?.split("/dashboard/")[1] || "my-order");
   }, [location]);
 
   return (
@@ -63,35 +63,34 @@ const Dashboard = () => {
                   My Donations
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  to="/dashboard/my-event"
+                  className={`block py-2 px-4 rounded hover:bg-white hover:text-[#7abf18] ${
+                    selectedSubmenu === "my-event"
+                      ? "bg-white text-[#7abf18]"
+                      : ""
+                  }`}
+                >
+                  Registered Events
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/payment-history"
+                  className={`block py-2 px-4 rounded hover:bg-white hover:text-[#7abf18] ${
+                    selectedSubmenu === "payment-history"
+                      ? "bg-white text-[#7abf18]"
+                      : ""
+                  }`}
+                >
+                  Payment History
+                </NavLink>
+              </li>
             </>
           )}
 
-          {/* <li>
-            <NavLink
-              to="/dashboard/attended-events"
-              className={`block py-2 px-4 rounded hover:bg-white hover:text-[#7abf18] ${
-                selectedSubmenu === "attended-events"
-                  ? "bg-white text-[#7abf18]"
-                  : ""
-              }`}
-            >
-              Attended Events
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/event-registration"
-              className={`block py-2 px-4 rounded hover:bg-white hover:text-[#7abf18] ${
-                selectedSubmenu === "event-registration"
-                  ? "bg-white text-[#7abf18]"
-                  : ""
-              }`}
-            >
-              Event Registration
-            </NavLink>
-          </li> */}
-
-          {user?.role==="ADMIN" && (
+          {user?.role === "ADMIN" && (
             <>
               <li>
                 <NavLink
@@ -222,7 +221,7 @@ const Dashboard = () => {
               to="/"
               className={` py-2 px-4 bg-black rounded flex gap-2 items-center hover:bg-white hover:text-[#7abf18]`}
             >
-             <FaStepBackward /> Back to Home
+              <FaStepBackward /> Back to Home
             </NavLink>
           </li>
         </ul>

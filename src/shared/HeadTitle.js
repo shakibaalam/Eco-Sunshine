@@ -1,7 +1,7 @@
 import React from 'react';
 
 const HeadTitle = ({title}) => {
-    const words = title.split(' ');
+    const words = title?.split(' ');
     return (
         <div className=' text-center'>
             <h2 className=' text-2xl font-bold uppercase'><span className='text-primary'>{words[0]}</span> {words[1]}</h2>

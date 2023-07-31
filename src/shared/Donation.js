@@ -1,8 +1,13 @@
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import React, { useState } from "react";
+import StripePaymentForm from "./StripePaymentForm";
 
 const Donation = () => {
+  const stripePromise = loadStripe("your_stripe_publishable_key");
   const [selectedAmount, setSelectedAmount] = useState(null);
   const [customAmount, setCustomAmount] = useState("");
+  const [isStripe, setStripe] = useState(false);
 
   const handleCardClick = (amount) => {
     setSelectedAmount(amount);
@@ -14,11 +19,8 @@ const Donation = () => {
   };
 
   const handleDonate = () => {
-    // Here, you can integrate with a real payment gateway or simply show a success message as a mock implementation
     if (selectedAmount || customAmount) {
-      alert(
-        `Thank you for your donation of $${selectedAmount || customAmount}!`
-      );
+      setStripe(true);
     } else {
       alert("Please select or enter an amount to donate.");
     }
@@ -60,7 +62,7 @@ const Donation = () => {
           }`}
         >
           <p>I want to donate</p>
-          <p className=" text-2xl mt-1">$100</p>
+          <p className=" text-2xl mt-1">$150</p>
         </div>
         {/* Custom donation amount */}
         <div
@@ -84,22 +86,23 @@ const Donation = () => {
       </div>
       <div className="text-center mt-10">
         <button
+          onClick={handleDonate}
           className={`bg-[#7abf18] text-white px-6 py-2 rounded-lg ${
             !selectedAmount && !customAmount
               ? "opacity-50 cursor-not-allowed"
               : ""
           }`}
-          onClick={handleDonate}
           disabled={!selectedAmount && !customAmount}
         >
           Donate Now
-          {/* {selectedAmount !== "custom"
-                ? ` $${selectedAmount}`
-                : customAmount
-                ? ` $${customAmount}`
-                : " Now"} */}
         </button>
       </div>
+
+      {isStripe && (
+        <Elements stripe={stripePromise}>
+          <StripePaymentForm />
+        </Elements>
+      )}
     </div>
   );
 };
