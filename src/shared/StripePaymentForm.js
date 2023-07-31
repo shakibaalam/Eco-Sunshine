@@ -4,7 +4,7 @@ import axios from "axios";
 import { URL } from "../redux/EndPoints/fetchbasequery";
 import { toast } from "react-toastify";
 
-const StripePaymentForm = ({ isStripe, cartIds, totalPrice, setStripe }) => {
+const StripePaymentForm = ({ isStripe, cartIds, totalPrice, setStripe,refetch }) => {
   const [loading, setLoading] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
@@ -43,6 +43,7 @@ const StripePaymentForm = ({ isStripe, cartIds, totalPrice, setStripe }) => {
       console.log(data); // Handle successful payment response
       if (data?.success === true) {
         toast.success("Successfully payment completed! Thank you.");
+        refetch();
         setLoading(false);
         setStripe(false);
       }

@@ -1,4 +1,5 @@
 import React from "react";
+import { useGetRegEventQuery } from "../../../redux/EndPoints/ApiEndpoints";
 
 const MyEvent = () => {
   // Sample data for demonstration
@@ -8,6 +9,9 @@ const MyEvent = () => {
     { id: 3, eventName: "Event 3", date: "2023-07-28", location: "Location 3" },
     // Add more registered events as needed
   ];
+
+  const {data:regEvent,isLoading}=useGetRegEventQuery();
+  console.log(regEvent);
 
   return (
     <div className="p-4">

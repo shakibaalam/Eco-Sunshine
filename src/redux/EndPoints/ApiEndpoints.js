@@ -123,6 +123,15 @@ export const ecoSlice = apiSlice.injectEndpoints({
       providesTags: ["eco"],
     }),
 
+    // get all registered events by user
+    getRegEvent: builder.query({
+      query: () => ({
+        url: `/api/v1/event/get-reg-event`,
+        method: "GET",
+      }),
+      providesTags: ["eco"],
+    }),
+
     // event get by id
     getEventById: builder.query({
       query: (id) => ({
@@ -136,6 +145,16 @@ export const ecoSlice = apiSlice.injectEndpoints({
     postEvent: builder.mutation({
       query: (data) => ({
         url: `/api/v1/event/create-event`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["eco"],
+    }),
+
+    // post an event reg by user
+    eventReg: builder.mutation({
+      query: (data) => ({
+        url: `/api/v1/event/create-event-reg`,
         method: "POST",
         body: data,
       }),
@@ -301,6 +320,18 @@ export const ecoSlice = apiSlice.injectEndpoints({
       },
       invalidatesTags: ["eco"],
     }),
+
+    // ......................................... customer payment history ...............................................//
+
+    // Campaign get by id
+    getPaymentHistory: builder.query({
+      query: () => ({
+        url: `/api/v1/products/get-confirm-pay-product`,
+        method: "GET",
+      }),
+      providesTags: ["eco"],
+    }),
+
   }),
 });
 
@@ -316,10 +347,12 @@ export const {
   useEditBlogMutation,
   usePostBlogMutation,
   useGetEventQuery,
+  useGetRegEventQuery,
   usePostEventMutation,
   useDeleteEventMutation,
   useEditEventMutation,
   useGetEventByIdQuery,
+  useEventRegMutation,
   useDeleteCampaignMutation,
   useEditCampaignMutation,
   useGetCampaignQuery,
@@ -332,4 +365,5 @@ export const {
   useDeleteCartMutation,
   usePostCartMutation,
   useCreateCustomerIdMutation,
+  useGetPaymentHistoryQuery,
 } = ecoSlice;

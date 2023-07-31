@@ -2,8 +2,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import axios from "axios";
 import { logOut, setCredentials } from "../Slice/authSlice";
 
-// export const URL='http://localhost:5000/'
-export const URL='https://eco-sunshine-backend.vercel.app/'
+export const URL='http://localhost:5000/'
+// export const URL='https://eco-sunshine-backend.vercel.app/'
 
 const baseApi = fetchBaseQuery({
   baseUrl: URL,

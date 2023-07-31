@@ -16,7 +16,7 @@ const EventDetails = () => {
   const { id } = useParams();
   const { data: eventById, isLoading } = useGetEventByIdQuery(id);
   const { formattedDate, formattedTime } = formatDateTime(eventById?.date);
-  console.log(eventById);
+  //console.log(eventById);
   return (
     <div>
       <Banner banner={bannerImg} title={eventById?.title} />
@@ -55,7 +55,7 @@ const EventDetails = () => {
 
               <p color="mt-5">{eventById?.content}</p>
             </div>
-            <RegisterForm />
+            <RegisterForm eventById={eventById} formattedTime={formattedTime} formattedDate={formattedDate}/>
           </div>
         )}
 

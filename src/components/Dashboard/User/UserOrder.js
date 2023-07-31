@@ -12,7 +12,9 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import StripePaymentForm from "../../../shared/StripePaymentForm";
 
-const stripePromise = loadStripe('pk_test_51NYRyfKTzmdU21JYmYlQ3VYe2clSCUfGBAcwtmK3UsLaIK48eCxuM749imCD4UCsJMuQtRY1YoUmhAIUKRqRT46c007ivjL7C7');
+const stripePromise = loadStripe(
+  "pk_test_51NYRyfKTzmdU21JYmYlQ3VYe2clSCUfGBAcwtmK3UsLaIK48eCxuM749imCD4UCsJMuQtRY1YoUmhAIUKRqRT46c007ivjL7C7"
+);
 
 const UserOrder = () => {
   const { data: allCartOfUser, isLoading, refetch } = useGetCartQuery();
@@ -23,7 +25,7 @@ const UserOrder = () => {
   const [isStripe, setStripe] = useState(null);
   const [cartIds, setCartIds] = useState([]);
 
-  console.log(totalPrice*100);
+  console.log(totalPrice * 100);
 
   useEffect(() => {
     if (allCartOfUser?.data?.length > 0) {
@@ -52,7 +54,6 @@ const UserOrder = () => {
   useEffect(() => {
     console.log(resIdInfo);
     if (resIdInfo?.status === "fulfilled") {
-      
       setStripe(resIdInfo?.data?.customerId);
     }
   }, [resIdInfo, refetch]);
@@ -72,7 +73,7 @@ const UserOrder = () => {
         <p className="text-gray-500">You have not placed any orders yet.</p>
       ) : isLoading ? (
         <Loading />
-      ) : (
+      ) : allCartOfUser?.data?.length > 0 ? (
         <div>
           <div className="overflow-x-auto">
             <table className="table-auto border-collapse w-full">
@@ -136,11 +137,18 @@ const UserOrder = () => {
           </div>
 
           {isStripe && (
-            <Elements  stripe={stripePromise}>
-              <StripePaymentForm isStripe={isStripe} setStripe={setStripe} cartIds={cartIds} totalPrice={totalPrice}/>
+            <Elements stripe={stripePromise}>
+              <StripePaymentForm
+                isStripe={isStripe}
+                setStripe={setStripe}
+                cartIds={cartIds}
+                totalPrice={totalPrice} refetch={refetch}
+              />
             </Elements>
           )}
         </div>
+      ) : (
+        <p className=" text-red-500 text-lg">No order place yet</p>
       )}
     </div>
   );

@@ -22,7 +22,7 @@ const AddEvent = () => {
       const errorMessage = resEventInfo?.error?.data?.message;
       toast.error(errorMessage);
     }
-  }, [resEventInfo?.status, resEventInfo?.error?.data?.message, reset]);
+  }, [resEventInfo, reset]);
 
   const onSubmit = (data) => {
     //console.log(data);

@@ -1,15 +1,55 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
+import { useEventRegMutation } from "../../redux/EndPoints/ApiEndpoints";
+import { toast } from "react-toastify";
 
-const RegisterForm = () => {
+const RegisterForm = ({ eventById, formattedTime, formattedDate }) => {
+  const [postEventReg, resEventInfo] = useEventRegMutation();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
+  const user = useSelector((state) => {
+    const userData = state.auth.user;
+    try {
+      return JSON.parse(userData);
+    } catch (error) {
+      return userData;
+    }
+  });
+
+  useEffect(() => {
+    if (resEventInfo?.status === "fulfilled") {
+      console.log(resEventInfo?.status);
+      toast.success("Successfully posted");
+      reset();
+    } else if (resEventInfo?.status === "rejected") {
+      console.log(resEventInfo);
+      const errorMessage = resEventInfo?.error?.data?.message;
+      toast.error(errorMessage);
+    }
+  }, [resEventInfo, reset]);
+
   const onSubmit = (data) => {
-    console.log(data);
+    const body = {
+      date: formattedDate,
+      location: eventById?.des,
+      time: formattedTime,
+      des: eventById?.content,
+      title: eventById?.title,
+      image: eventById?.image,
+      email: data?.email,
+      message: data?.message,
+      name: data?.name,
+      phone: data?.phone,
+    };
+    //console.log(data);
+    postEventReg(body);
+
     // You can handle form submission here.
   };
 
@@ -27,6 +67,7 @@ const RegisterForm = () => {
           className="w-full p-2 border-2 border-gray-300 rounded focus:border-[#7abf18]"
           type="text"
           id="name"
+          defaultValue={user?.name || ""} // Set initial value from the user data if available
         />
         {errors.name && (
           <span className="text-red-500">{errors.name.message}</span>
@@ -48,6 +89,7 @@ const RegisterForm = () => {
           className="w-full p-2 border-2 border-gray-300 rounded focus:border-[#7abf18]"
           type="email"
           id="email"
+          defaultValue={user?.email || ""} // Set initial value from the user data if available
         />
         {errors.email && (
           <span className="text-red-500">{errors.email.message}</span>
