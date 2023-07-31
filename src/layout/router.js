@@ -32,6 +32,7 @@ import ManageCampaign from "../components/Dashboard/Admin/ManageCampaign";
 import RequireAdmin from "../require/RequireAdmin";
 import MyEvent from "../components/Dashboard/User/MyEvent";
 import PaymentHistory from "../components/Dashboard/User/PaymentHistory";
+import StripePaymentForm from "../pages/StripePaymentForm";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,7 @@ const router = createBrowserRouter([
       { path: "productDetails/:id", element: <ProductDetails /> },
       { path: "login", element: <LogInForm /> },
       { path: "signup", element: <RegistrationForm /> },
+      { path: "payments", element: <StripePaymentForm /> },
     ],
   },
   {
