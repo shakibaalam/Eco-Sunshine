@@ -9,6 +9,7 @@ import {
 import Loading from "../../shared/Loading";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -28,6 +29,15 @@ const ProductDetails = () => {
       toast.error(errorMessage);
     }
   }, [resInfo?.status, resInfo?.error?.data?.message]);
+
+  const user = useSelector((state) => {
+    const userData = state.auth.user;
+    try {
+      return JSON.parse(userData);
+    } catch (error) {
+      return userData;
+    }
+  });
 
   const handleCart = (id) => {
     addCart(id);
@@ -51,12 +61,14 @@ const ProductDetails = () => {
                 {productById?.price}
               </p>
               <p>{productById?.des}</p>
-              <button
-                onClick={() => handleCart(productById?._id)}
-                className="bg-[#7abf18] px-6 mt-10 text-center py-2 text-white font-semibold"
-              >
-                Add To Cart
-              </button>
+              {user?.role !== "ADMIN" && (
+                <button
+                  onClick={() => handleCart(productById?._id)}
+                  className="bg-[#7abf18] px-6 mt-10 text-center py-2 text-white font-semibold"
+                >
+                  Add To Cart
+                </button>
+              )}
             </div>
           </div>
         </div>

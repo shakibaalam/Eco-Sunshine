@@ -11,7 +11,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import logo from "../img/logo.png";
 import { logOut } from "../redux/Slice/authSlice";
-import Donation from "../shared/Donation";
 import Cart from "../components/Cart/Cart";
 import DonateForm from "../components/Home/DonateForm";
 
@@ -74,9 +73,11 @@ const Navbar = () => {
             <GrSkype className=" hover:text-[#7abf18]" />
             <GrTwitter className=" hover:text-[#7abf18]" />
           </div>
-          <span>
-            <Cart />
-          </span>
+          {user?.role !== "ADMIN" && (
+            <span>
+              <Cart />
+            </span>
+          )}
         </div>
       </div>
       <nav className="bg-[#7abf18] uppercase lg:w-[90%] xl:w-[85%] mx-auto py-5  font-semibold flex justify-around items-center relative z-10 rounded-sm">
@@ -168,7 +169,7 @@ const Navbar = () => {
               />
             </div>
             {/* <Donation /> */}
-            <DonateForm/>
+            <DonateForm />
           </div>
         </div>
       )}

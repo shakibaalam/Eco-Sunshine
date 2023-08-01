@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {
-  useGetCartByIdQuery,
   usePostCartMutation,
 } from "../../redux/EndPoints/ApiEndpoints";
-import RequireAuth from "../../require/RequireAuth";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 const AllProducts = ({ p, shop }) => {
   const { img, _id, name, des, price } = p;
@@ -22,6 +21,15 @@ const AllProducts = ({ p, shop }) => {
       toast.error(errorMessage);
     }
   }, [resInfo?.status, resInfo?.error?.data?.message]);
+
+  const user = useSelector((state) => {
+    const userData = state.auth.user;
+    try {
+      return JSON.parse(userData);
+    } catch (error) {
+      return userData;
+    }
+  });
 
   const handleCart = (id) => {
     addCart(id);
@@ -41,7 +49,7 @@ const AllProducts = ({ p, shop }) => {
           Add To Cart
         </button>
       </RequireAuth> */}
-      {shop && (
+      {shop && user?.role !== "ADMIN" && (
         <button
           onClick={() => handleCart(_id)}
           className="bg-[#7abf18] w-full text-center py-2 text-white font-semibold"

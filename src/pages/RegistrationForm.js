@@ -175,7 +175,7 @@ const RegistrationForm = () => {
             <div className=" text-center mt-2">
               <span className="text-sm text-gray-600">
                 Already member?{" "}
-                <a href="/signup" className="text-[#7abf18] hover:underline">
+                <a href="/login" className="text-[#7abf18] hover:underline">
                   Login Now
                 </a>
               </span>

@@ -1,13 +1,26 @@
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import StripePaymentForm from "./StripePaymentForm";
+import { useCreateCustomerIdMutation } from "../redux/EndPoints/ApiEndpoints";
 
-const Donation = () => {
-  const stripePromise = loadStripe("your_stripe_publishable_key");
+const stripePromise = loadStripe(
+  "pk_test_51NYRyfKTzmdU21JYmYlQ3VYe2clSCUfGBAcwtmK3UsLaIK48eCxuM749imCD4UCsJMuQtRY1YoUmhAIUKRqRT46c007ivjL7C7"
+);
+
+const Donation = ({ id }) => {
+  const [customerId, resIdInfo] = useCreateCustomerIdMutation();
+
   const [selectedAmount, setSelectedAmount] = useState(null);
   const [customAmount, setCustomAmount] = useState("");
-  const [isStripe, setStripe] = useState(false);
+  const [isStripe, setStripe] = useState(null);
+
+  useEffect(() => {
+    console.log(resIdInfo);
+    if (resIdInfo?.status === "fulfilled") {
+      setStripe(resIdInfo?.data?.customerId);
+    }
+  }, [resIdInfo]);
 
   const handleCardClick = (amount) => {
     setSelectedAmount(amount);
@@ -20,7 +33,7 @@ const Donation = () => {
 
   const handleDonate = () => {
     if (selectedAmount || customAmount) {
-      setStripe(true);
+      customerId();
     } else {
       alert("Please select or enter an amount to donate.");
     }
@@ -100,7 +113,12 @@ const Donation = () => {
 
       {isStripe && (
         <Elements stripe={stripePromise}>
-          <StripePaymentForm />
+          <StripePaymentForm
+            isStripe={isStripe}
+            setStripe={setStripe}
+            cartIds={[id]}
+            totalPrice={selectedAmount || customAmount} donate
+          />
         </Elements>
       )}
     </div>

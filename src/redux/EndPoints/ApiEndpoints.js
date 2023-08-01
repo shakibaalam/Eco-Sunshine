@@ -332,6 +332,17 @@ export const ecoSlice = apiSlice.injectEndpoints({
       providesTags: ["eco"],
     }),
 
+     // ......................................... donation ...............................................//
+
+     //get user donation
+     getUserDonation: builder.query({
+      query: () => ({
+        url: `/api/v1/donation/get-confirm-pay-donation`,
+        method: "GET",
+      }),
+      providesTags: ["eco"],
+    }),
+
   }),
 });
 
@@ -366,4 +377,5 @@ export const {
   usePostCartMutation,
   useCreateCustomerIdMutation,
   useGetPaymentHistoryQuery,
+  useGetUserDonationQuery,
 } = ecoSlice;

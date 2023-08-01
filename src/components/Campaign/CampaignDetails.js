@@ -51,7 +51,7 @@ const CampaignDetails = () => {
         )}
 
         {/* donation part */}
-        <Donation />
+        <Donation id={campaignById?._id} />
       </div>
     </div>
   );
