@@ -18,7 +18,7 @@ const MyDonation = () => {
         <div className="overflow-x-auto">
           <table className="table-auto border-collapse  w-full">
             <thead>
-              <tr>
+              <tr className="bg-black text-white">
                 <th className="px-4 py-2 border border-[#7abf18]">Donation ID</th>
                 <th className="px-4 py-2 border border-[#7abf18]">Date</th>
                 <th className="px-4 py-2 border border-[#7abf18]">Amount</th>

@@ -45,22 +45,22 @@ const ManageUser = () => {
       ) : (
         <table className="w-full border-collapse border">
           <thead>
-            <tr>
-              <th className="border p-2">ID</th>
-              <th className="border p-2">Name</th>
-              <th className="border p-2">Email</th>
-              <th className="border p-2">Role</th>
-              <th className="border p-2">Actions</th>
+            <tr className="bg-black text-white">
+              <th className="border border-[#7abf18] p-2">ID</th>
+              <th className="border border-[#7abf18] p-2">Name</th>
+              <th className="border border-[#7abf18] p-2">Email</th>
+              <th className="border border-[#7abf18] p-2">Role</th>
+              <th className="border border-[#7abf18] p-2">Actions</th>
             </tr>
           </thead>
           <tbody>
             {allUser?.data?.map((user) => (
               <tr key={user.id}>
-                <td className="border p-2 text-center">{user?._id}</td>
-                <td className="border p-2 text-center">{user?.name}</td>
-                <td className="border p-2 text-center">{user?.email}</td>
-                <td className="border p-2 text-center">{user?.role}</td>
-                <td className="border p-2 text-center">
+                <td className="border border-[#7abf18] p-2 text-center">{user?._id}</td>
+                <td className="border border-[#7abf18] p-2 text-center">{user?.name}</td>
+                <td className="border border-[#7abf18] p-2 text-center">{user?.email}</td>
+                <td className="border border-[#7abf18] p-2 text-center">{user?.role}</td>
+                <td className="border border-[#7abf18] p-2 text-center">
                   {user?.role === "USER" && (
                     <button
                       onClick={() => makeAdmin(user?._id)}

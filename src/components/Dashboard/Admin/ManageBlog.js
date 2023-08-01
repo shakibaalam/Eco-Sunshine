@@ -98,22 +98,22 @@ const ManageBlog = () => {
       ) : (
         <table className="w-full border-collapse border">
           <thead>
-            <tr>
-              <th className="border p-2">ID</th>
-              <th className="border p-2">Title</th>
-              <th className="border p-2">Author</th>
-              <th className="border p-2">Date</th>
-              <th className="border p-2">Actions</th>
+            <tr className="bg-black text-white">
+              <th className="border border-[#7abf18] p-2">ID</th>
+              <th className="border border-[#7abf18] p-2">Title</th>
+              <th className="border border-[#7abf18] p-2">Author</th>
+              <th className="border border-[#7abf18] p-2">Date</th>
+              <th className="border border-[#7abf18] p-2">Actions</th>
             </tr>
           </thead>
           <tbody>
             {allBlog?.data?.map((blog) => (
               <tr key={blog?._id}>
-                <td className="border p-2 text-center">{blog?._id}</td>
-                <td className="border p-2 text-center">{blog?.title}</td>
-                <td className="border p-2 text-center">{blog?.author}</td>
-                <td className="border p-2 text-center">{blog?.date}</td>
-                <td className="border p-2 text-center">
+                <td className="border border-[#7abf18] p-2 text-center">{blog?._id}</td>
+                <td className="border border-[#7abf18] p-2 text-center">{blog?.title}</td>
+                <td className="border border-[#7abf18] p-2 text-center">{blog?.author}</td>
+                <td className="border border-[#7abf18] p-2 text-center">{blog?.date}</td>
+                <td className="border border-[#7abf18] p-2 text-center">
                   <button
                     onClick={() => handleEdit(blog)}
                     className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded mr-2"

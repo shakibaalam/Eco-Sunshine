@@ -18,21 +18,21 @@ const ManageOrder = () => {
       
       <table className="w-full border-collapse border">
         <thead>
-          <tr>
-            <th className="border p-2">ID</th>
-            <th className="border p-2">Order Number</th>
-            <th className="border p-2">Date</th>
-            <th className="border p-2">Status</th>
-            <th className="border p-2">Actions</th>
+          <tr className="bg-black text-white">
+            <th className="border border-[#7abf18] p-2">ID</th>
+            <th className="border border-[#7abf18] p-2">Order Number</th>
+            <th className="border border-[#7abf18] p-2">Date</th>
+            <th className="border border-[#7abf18] p-2">Status</th>
+            <th className="border border-[#7abf18] p-2">Actions</th>
           </tr>
         </thead>
         <tbody>
           {orders.map((order) => (
             <tr key={order.id}>
-              <td className="border p-2 text-center">{order.id}</td>
-              <td className="border p-2 text-center">{order.orderNumber}</td>
-              <td className="border p-2 text-center">{order.date}</td>
-              <td className="border p-2 text-center">
+              <td className="border border-[#7abf18] p-2 text-center">{order.id}</td>
+              <td className="border border-[#7abf18] p-2 text-center">{order.orderNumber}</td>
+              <td className="border border-[#7abf18] p-2 text-center">{order.date}</td>
+              <td className="border border-[#7abf18] p-2 text-center">
                 {order?.paid ? (
                   <button
                     //onClick={() => handlePending(order)}
@@ -46,7 +46,7 @@ const ManageOrder = () => {
                   </button>
                 )}
               </td>
-              <td className="border p-2 text-center">
+              <td className="border border-[#7abf18] p-2 text-center">
                 {!order.paid && (
                   <button
                     //onClick={() => setCancel(order)}

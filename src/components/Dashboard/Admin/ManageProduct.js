@@ -90,21 +90,21 @@ const ManageProduct = () => {
       ) : (
         <table className="w-full border-collapse border">
           <thead>
-            <tr>
-              <th className="border p-2 text-center">ID</th>
-              <th className="border p-2 text-center">Image</th>
-              <th className="border p-2 text-center">Name</th>
-              <th className="border p-2 text-center">Price</th>
-              <th className="border p-2 text-center">Quantity</th>
-              <th className="border p-2 text-center">Actions</th>
+            <tr className="bg-black text-white">
+              <th className="border  border-[#7abf18] p-2 text-center">ID</th>
+              <th className="border  border-[#7abf18] p-2 text-center">Image</th>
+              <th className="border  border-[#7abf18] p-2 text-center">Name</th>
+              <th className="border  border-[#7abf18] p-2 text-center">Price</th>
+              <th className="border  border-[#7abf18] p-2 text-center">Quantity</th>
+              <th className="border  border-[#7abf18] p-2 text-center">Actions</th>
             </tr>
           </thead>
           <tbody>
             {allProduct?.data?.map((product) => (
               <tr key={product.id}>
-                <td className="border p-2 text-center">{product?._id}</td>
+                <td className="border border-[#7abf18] p-2 text-center">{product?._id}</td>
                 {product?.img && (
-                  <td className="border p-2 text-center">
+                  <td className="border border-[#7abf18] p-2 text-center">
                     <img
                       className="w-10 h-10 rounded-full mx-auto"
                       src={product?.img}
@@ -113,10 +113,10 @@ const ManageProduct = () => {
                   </td>
                 )}
 
-                <td className="border p-2 text-center">{product?.name}</td>
-                <td className="border p-2 text-center">{product?.price}</td>
-                <td className="border p-2 text-center">{product?.quantity}</td>
-                <td className="border p-2 text-center">
+                <td className="border border-[#7abf18] p-2 text-center">{product?.name}</td>
+                <td className="border border-[#7abf18] p-2 text-center">{product?.price}</td>
+                <td className="border border-[#7abf18] p-2 text-center">{product?.quantity}</td>
+                <td className="border border-[#7abf18] p-2 text-center">
                   <button
                     onClick={() => handleEdit(product)}
                     className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded mr-2"

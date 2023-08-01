@@ -96,26 +96,26 @@ const ManageCampaign = () => {
       ) : (
         <table className="w-full border-collapse border">
           <thead>
-            <tr>
-              <th className="border p-2">Title</th>
-              <th className="border p-2">Target Amount</th>
-              <th className="border p-2">Start Date</th>
-              <th className="border p-2">End Date</th>
-              <th className="border p-2">Actions</th>
+            <tr className="bg-black text-white">
+              <th className="border border-[#7abf18] p-2">Title</th>
+              <th className="border border-[#7abf18] p-2">Target Amount</th>
+              <th className="border border-[#7abf18] p-2">Start Date</th>
+              <th className="border border-[#7abf18] p-2">End Date</th>
+              <th className="border border-[#7abf18] p-2">Actions</th>
             </tr>
           </thead>
           <tbody>
             {allCampaign?.data?.map((campaign) => (
               <tr key={campaign.id}>
-                <td className="border p-2 text-center">{campaign?.title}</td>
-                <td className="border p-2 text-center">
+                <td className="border border-[#7abf18] p-2 text-center">{campaign?.title}</td>
+                <td className="border border-[#7abf18] p-2 text-center">
                   {campaign?.targetAmount}
                 </td>
-                <td className="border p-2 text-center">
+                <td className="border border-[#7abf18] p-2 text-center">
                   {campaign?.created_at}
                 </td>
-                <td className="border p-2 text-center">{campaign?.endDate}</td>
-                <td className="border p-2 text-center">
+                <td className="border border-[#7abf18] p-2 text-center">{campaign?.endDate}</td>
+                <td className="border border-[#7abf18] p-2 text-center">
                   <button
                     onClick={() => handleEdit(campaign)}
                     className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded mr-2"
