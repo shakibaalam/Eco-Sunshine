@@ -7,7 +7,7 @@ const Events = ({ e }) => {
   const { formattedDate, formattedTime } = formatDateTime(date); 
 
   return (
-    <div className="flex items-center gap-10 ml-[-40px] my-10 group">
+    <div className="flex items-center gap-10 lg:ml-[-40px] my-10 group">
       <div>
         <img
           className="w-20 h-20 rounded-full border-4 border-white event-container"

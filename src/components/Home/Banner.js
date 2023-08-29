@@ -54,7 +54,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="relative h-[75vh] mt-[-35px]">
+    <div className="relative h-[75vh] w-full md:mt-[-35px]">
       {featuredProducts.map((item, index) => (
         <div
           key={item.id}
@@ -62,7 +62,7 @@ const Banner = () => {
             index === currentIndex ? "opacity-100" : "opacity-0 scale-100 "
           } transition-opacity ease-out duration-1000`}
         >
-          <img src={item.img} alt="" className="w-full h-full" />
+          <img src={item?.img} alt="" className="w-full h-full" />
           <div
             className={`absolute inset-0 bg-black opacity-40 transition-opacity ${
               index === currentIndex ? "opacity-100" : "opacity-0"
@@ -79,7 +79,7 @@ const Banner = () => {
               {item?.des1}
             </p>
             <h2
-              className={`text-white text-4xl font-bold uppercase ${
+              className={`text-white md:text-4xl text-2xl font-bold uppercase ${
                 index === currentIndex
                   ? "opacity-100 transition-transform  ease-out duration-1000 transform translate-x-0"
                   : "opacity-0 translate-x-10 "
@@ -158,9 +158,9 @@ const Banner = () => {
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white rounded-lg p-6 w-1/2">
             <div className="bg-[#7abf18] text-white w-full flex justify-between items-center p-6">
-              <h2 className="text-xl font-semibold">DONATE </h2>
+              <h2 className="text-xl font-semibold">DONATE</h2>
               <FaWindowClose
-                className=" cursor-pointer"
+                className="cursor-pointer"
                 onClick={() => setPopup(false)}
               />
             </div>

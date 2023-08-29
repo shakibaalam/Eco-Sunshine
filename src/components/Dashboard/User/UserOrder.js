@@ -25,7 +25,7 @@ const UserOrder = () => {
   const [isStripe, setStripe] = useState(null);
   const [cartIds, setCartIds] = useState([]);
 
-  console.log(totalPrice * 100);
+  // console.log(totalPrice * 100);
 
   useEffect(() => {
     if (allCartOfUser?.data?.length > 0) {
@@ -42,7 +42,7 @@ const UserOrder = () => {
 
   useEffect(() => {
     if (resInfo?.status === "fulfilled") {
-      console.log(resInfo?.status);
+      // console.log(resInfo?.status);
       toast.success("Successfully deleted");
       refetch();
     } else if (resInfo?.status === "rejected") {
@@ -52,7 +52,7 @@ const UserOrder = () => {
   }, [resInfo, refetch]);
 
   useEffect(() => {
-    console.log(resIdInfo);
+    // console.log(resIdInfo);
     if (resIdInfo?.status === "fulfilled") {
       setStripe(resIdInfo?.data?.customerId);
     }

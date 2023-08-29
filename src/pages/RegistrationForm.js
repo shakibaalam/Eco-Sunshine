@@ -37,7 +37,7 @@ const RegistrationForm = () => {
       const prevPath = location.state?.from || "/";
       navigate(prevPath);
     } else if (resInfo?.status === "rejected") {
-      console.log("problem");
+      // console.log("problem");
       const errorMessage = resInfo?.error?.data?.message;
       toast.error(errorMessage);
     }
@@ -55,7 +55,7 @@ const RegistrationForm = () => {
     createRegister(data);
   };
   return (
-    <div className="h-[100vh]" style={{ backgroundImage: `url(${banner})` }}>
+    <div className="h-[100vh] lg:mt-[-100px] bg-cover bg-no-repeat" style={{ backgroundImage: `url(${banner})` }}>
       <div className="flex justify-center items-center h-full">
         <div className="w-full max-w-md">
           <h2 className=" text-center font-bold text-2xl text-slate-400 uppercase mb-5">

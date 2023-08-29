@@ -13,11 +13,11 @@ const AddBlog = () => {
 
   useEffect(() => {
     if (resBlogInfo?.status === "fulfilled") {
-      console.log(resBlogInfo?.status);
+      // console.log(resBlogInfo?.status);
       toast.success("Successfully posted");
       reset();
     } else if (resBlogInfo?.status === "rejected") {
-      console.log(resBlogInfo?.status);
+      // console.log(resBlogInfo?.status);
       const errorMessage = resBlogInfo?.error?.data?.message;
       toast.error(errorMessage);
     }

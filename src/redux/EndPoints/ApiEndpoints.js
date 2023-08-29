@@ -132,6 +132,15 @@ export const ecoSlice = apiSlice.injectEndpoints({
       providesTags: ["eco"],
     }),
 
+    // get all registered events for admin
+    getAllRegEvent: builder.query({
+      query: () => ({
+        url: `/api/v1/event/get-allReg-event`,
+        method: "GET",
+      }),
+      providesTags: ["eco"],
+    }),
+
     // event get by id
     getEventById: builder.query({
       query: (id) => ({
@@ -180,6 +189,17 @@ export const ecoSlice = apiSlice.injectEndpoints({
       query: (id) => {
         return {
           url: `/api/v1/event/delete-event/${id}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: ["eco"],
+    }),
+
+    // delete an event by user
+    deleteEventUser: builder.mutation({
+      query: (id) => {
+        return {
+          url: `/api/v1/event/delete-reg-event/${id}`,
           method: "DELETE",
         };
       },
@@ -323,10 +343,20 @@ export const ecoSlice = apiSlice.injectEndpoints({
 
     // ......................................... customer payment history ...............................................//
 
-    // Campaign get by id
+    // user payment
     getPaymentHistory: builder.query({
       query: () => ({
         url: `/api/v1/products/get-confirm-pay-product`,
+        method: "GET",
+      }),
+      providesTags: ["eco"],
+    }),
+    // ......................................... admin get payment history ...............................................//
+
+    // get all users payment for admin
+    getPaymentAdmin: builder.query({
+      query: () => ({
+        url: `/api/v1/products/get-all-pay-product`,
         method: "GET",
       }),
       providesTags: ["eco"],
@@ -359,8 +389,10 @@ export const {
   usePostBlogMutation,
   useGetEventQuery,
   useGetRegEventQuery,
+  useGetAllRegEventQuery,
   usePostEventMutation,
   useDeleteEventMutation,
+  useDeleteEventUserMutation,
   useEditEventMutation,
   useGetEventByIdQuery,
   useEventRegMutation,
@@ -377,5 +409,6 @@ export const {
   usePostCartMutation,
   useCreateCustomerIdMutation,
   useGetPaymentHistoryQuery,
+  useGetPaymentAdminQuery,
   useGetUserDonationQuery,
 } = ecoSlice;

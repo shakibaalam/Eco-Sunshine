@@ -8,19 +8,13 @@ import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import Loading from "../../../shared/Loading";
 
-// Sample data for demonstration purposes
-const products = [
-  { id: 1, name: "Product 1", price: 10, quantity: 20 },
-  { id: 2, name: "Product 2", price: 15, quantity: 15 },
-  { id: 3, name: "Product 3", price: 20, quantity: 10 },
-];
 
 const ManageProduct = () => {
   const { data: allProduct, isLoading, refetch } = useGetProductQuery();
   const [deleteProduct, resDeleteInfo] = useDeleteProductMutation();
   const [editProduct, resEditInfo] = useEditProductMutation();
 
-  console.log(allProduct);
+  // console.log(allProduct);
 
   const [editPopup, setEditPopup] = useState(null);
 
@@ -33,11 +27,11 @@ const ManageProduct = () => {
 
   useEffect(() => {
     if (resDeleteInfo?.status === "fulfilled") {
-      console.log(resDeleteInfo?.status);
+      // console.log(resDeleteInfo?.status);
       refetch();
       toast.success("Successfully deleted");
     } else if (resDeleteInfo?.status === "rejected") {
-      console.log(resDeleteInfo?.status);
+      // console.log(resDeleteInfo?.status);
       const errorMessage = resDeleteInfo?.error?.data?.message;
       toast.error(errorMessage);
     }
@@ -45,18 +39,18 @@ const ManageProduct = () => {
 
   useEffect(() => {
     if (resEditInfo?.status === "fulfilled") {
-      console.log(resEditInfo?.status);
+      // console.log(resEditInfo?.status);
       refetch();
       toast.success("Successfully updated");
     } else if (resEditInfo?.status === "rejected") {
-      console.log(resEditInfo?.status);
+      // console.log(resEditInfo?.status);
       const errorMessage = resEditInfo?.error?.data?.message;
       toast.error(errorMessage);
     }
   }, [resEditInfo?.status, resEditInfo?.error?.data?.message, refetch]);
 
   const handleDelete = (id) => {
-    console.log(id);
+    // console.log(id);
     deleteProduct(id);
   };
 

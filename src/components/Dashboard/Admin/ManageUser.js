@@ -16,15 +16,15 @@ const users = [
 const ManageUser = () => {
   const { data: allUser, isLoading, refetch } = useGetAllUserQuery();
   const [changeRole, resInfo] = useUserRoleMutation();
-  console.log(allUser);
+  // console.log(allUser);
 
   useEffect(() => {
     if (resInfo?.status === "fulfilled") {
-      console.log(resInfo?.status);
+      // console.log(resInfo?.status);
       refetch();
       toast.success("Successfully make user admin");
     } else if (resInfo?.status === "rejected") {
-      console.log(resInfo?.status);
+      // console.log(resInfo?.status);
       const errorMessage = resInfo?.error?.data?.message;
       toast.error(errorMessage);
     }

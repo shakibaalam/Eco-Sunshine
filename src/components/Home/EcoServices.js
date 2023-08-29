@@ -10,13 +10,13 @@ import HeadTitle from "../../shared/HeadTitle";
 const EcoServices = () => {
   return (
     <div
-      className="w-full text-center  py-10"
+      className="w-full text-center  py-10 bg-cover bg-no-repeat"
       style={{ backgroundImage: `url(${banner})` }}
     >
-      <HeadTitle title="Eco Services"></HeadTitle>
+      <HeadTitle title="Eco Services"/>
 
-      <div className=" grid grid-cols-3 mt-20 items-center text-[#666] lg:px-20">
-        <div className=" text-right">
+      <div className=" grid grid-cols-1 md:grid-cols-3 mt-20 items-center text-[#666] lg:px-20">
+        <div className="text-right p-5 md:p-0">
           <div className=" flex items-center gap-3 ">
             <div>
               <h3 className=" font-bold text-2xl">RECYCLING</h3>
@@ -48,7 +48,7 @@ const EcoServices = () => {
           </div>
         </div>
         <img className="w-[50%] mx-auto" src={global} alt="" />
-        <div className=" text-left">
+        <div className=" text-left p-5 md:p-0">
           <div className=" flex items-center gap-3">
             <img
               className="w-16 h-16 rounded-full border-2 border-[#9f9e9e] hover:border-4 hover:border-[#7abf18]"

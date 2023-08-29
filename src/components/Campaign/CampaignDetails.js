@@ -17,7 +17,7 @@ const CampaignDetails = () => {
   return (
     <div>
       <Banner banner={bannerImg} title={campaignById?.title} />
-      <div className="lg:w-[80%] mx-auto my-10">
+      <div className="lg:w-[80%] w-[90%] mx-auto my-10">
         {isLoading ? (
           <Loading />
         ) : (

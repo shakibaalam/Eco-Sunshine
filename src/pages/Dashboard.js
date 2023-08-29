@@ -118,6 +118,18 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink
+                  to="/dashboard/registered-event"
+                  className={`block py-2 px-4 rounded hover:bg-white hover:text-[#7abf18] ${
+                    selectedSubmenu === "registered-event"
+                      ? "bg-white text-[#7abf18]"
+                      : ""
+                  }`}
+                >
+                  Registered Event
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
                   to="/dashboard/manage-blog"
                   className={`block py-2 px-4 rounded hover:bg-white hover:text-[#7abf18] ${
                     selectedSubmenu === "manage-blog"

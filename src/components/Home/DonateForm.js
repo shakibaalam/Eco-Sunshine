@@ -250,12 +250,12 @@ const DonateForm = () => {
   });
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     if (!user) {
       navigate("/login");
     } else {
       const res = await customerId();
-      console.log(res);
+      // console.log(res);
       if (res?.data?.customerId) {
         setStripe(true);
       }
@@ -264,7 +264,7 @@ const DonateForm = () => {
 
   return (
     <div
-      className="w-full relative flex justify-between px-14 "
+      className="w-full relative flex justify-between px-14 bg-no-repeat"
       style={{
         backgroundImage: `url(${banner})`,
         backgroundSize: "cover",
@@ -273,7 +273,7 @@ const DonateForm = () => {
     >
       <div className="absolute inset-0 bg-black bg-opacity-75 " />
       <div className="lg:w-3/4 xl:w-4/5 mx-auto">
-        <div className="relative z-10 bg-white w-[500px] px-10 py-3">
+        <div className="relative z-10 bg-white md:w-[500px] px-10 py-3">
           <h2 className="uppercase text-2xl my-5">
             <span className="text-primary font-bold">Make</span> Donation
           </h2>

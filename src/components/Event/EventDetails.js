@@ -16,12 +16,12 @@ const EventDetails = () => {
   const { id } = useParams();
   const { data: eventById, isLoading } = useGetEventByIdQuery(id);
   const { formattedDate, formattedTime } = formatDateTime(eventById?.date);
-  //console.log(eventById);
+  // console.log(eventById);
   return (
     <div>
       <Banner banner={bannerImg} title={eventById?.title} />
 
-      <div className="lg:w-[80%] mx-auto my-10">
+      <div className="lg:w-[80%] w-[90%] mx-auto my-10">
         {isLoading ? (
           <Loading />
         ) : (

@@ -32,11 +32,11 @@ const ManageBlog = () => {
 
   useEffect(() => {
     if (resDeleteInfo?.status === "fulfilled") {
-      console.log(resDeleteInfo?.status);
+      // console.log(resDeleteInfo?.status);
       refetch();
       toast.success("Successfully deleted");
     } else if (resDeleteInfo?.status === "rejected") {
-      console.log(resDeleteInfo?.status);
+      // console.log(resDeleteInfo?.status);
       const errorMessage = resDeleteInfo?.error?.data?.message;
       toast.error(errorMessage);
     }
@@ -44,11 +44,11 @@ const ManageBlog = () => {
 
   useEffect(() => {
     if (resEditInfo?.status === "fulfilled") {
-      console.log(resEditInfo?.status);
+      // console.log(resEditInfo?.status);
       refetch();
       toast.success("Successfully edited");
     } else if (resEditInfo?.status === "rejected") {
-      console.log(resEditInfo?.status);
+      // console.log(resEditInfo?.status);
       const errorMessage = resEditInfo?.error?.data?.message;
       toast.error(errorMessage);
     }
@@ -66,7 +66,7 @@ const ManageBlog = () => {
   };
 
   const handleDelete = (id) => {
-    console.log("Deleting blog with ID:", id);
+    // console.log("Deleting blog with ID:", id);
     deleteBlog(id);
   };
 

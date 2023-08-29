@@ -24,7 +24,7 @@ const EcoCauses = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="lg:w-[90%] xl:w-[85%] mx-auto">
+        <div className="lg:w-[90%] xl:w-[85%] w-[95%] mx-auto">
           <div className="mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 ">
             {reversedCampaign?.slice(0, 3).map((campaign, index) => (
               <AllCampaign key={index} campaign={campaign} />

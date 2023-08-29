@@ -24,11 +24,11 @@ const RegisterForm = ({ eventById, formattedTime, formattedDate }) => {
 
   useEffect(() => {
     if (resEventInfo?.status === "fulfilled") {
-      console.log(resEventInfo?.status);
+      // console.log(resEventInfo?.status);
       toast.success("Successfully posted");
       reset();
     } else if (resEventInfo?.status === "rejected") {
-      console.log(resEventInfo);
+      // console.log(resEventInfo);
       const errorMessage = resEventInfo?.error?.data?.message;
       toast.error(errorMessage);
     }

@@ -14,11 +14,11 @@ const AddProduct = () => {
 
   useEffect(() => {
     if (resProductInfo?.status === "fulfilled") {
-      console.log(resProductInfo?.status);
+      // console.log(resProductInfo?.status);
       toast.success("Successfully posted");
       reset();
     } else if (resProductInfo?.status === "rejected") {
-      console.log(resProductInfo?.status);
+      // console.log(resProductInfo?.status);
       const errorMessage = resProductInfo?.error?.data?.message;
       toast.error(errorMessage);
     }

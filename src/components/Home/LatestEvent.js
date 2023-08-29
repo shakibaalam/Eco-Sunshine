@@ -12,7 +12,7 @@ const LatestEvent = () => {
 
   const reversedEvents = allEvents?.data?.slice().reverse();
 
-  console.log(reversedEvents);
+  // console.log(reversedEvents);
 
   // useEffect(() => {
   //   fetch("events.json")
@@ -27,8 +27,8 @@ const LatestEvent = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="grid grid-cols-2 lg:w-[90%] xl:w-[85%] mx-auto my-10">
-          <img className="w-full mx-auto" src={eventImg} alt="" />
+        <div className="grid lg:grid-cols-2 grid-cols-1 lg:w-[90%] xl:w-[85%] w-[95%] mx-auto my-10">
+          <img className="w-full h-full mx-auto" src={eventImg} alt="" />
           <div className=" relative ">
             {reversedEvents?.slice(0,4).map((e) => (
               <Events key={e._id} e={e}></Events>

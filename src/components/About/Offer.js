@@ -33,15 +33,15 @@ const Offer = () => {
     },
   ];
   return (
-    <div className="grid lg:grid-cols-2 grid-cols-1 items-center lg:w-[80%] mx-auto relative my-16">
+    <div className="grid lg:grid-cols-2 grid-cols-1 items-center lg:w-[80%] w-[95%] mx-auto lg:relative my-16">
       <div>
-        <img src={img5} alt="" />
+        <img className="w-full mx-auto" src={img5} alt="" />
       </div>
-      <div className="bg-white shadow-lg p-6 absolute left-96">
+      <div className="bg-white shadow-lg p-6 lg:absolute lg:left-96">
         <h2 className=" font-bold text-xl mb-4">
           <span className="text-primary underline">WHAT</span> WE OFFER
         </h2>
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 gap-5">
           {offer?.map((o) => (
             <div key={o?.id} className="flex gap-3">
                 <img className="w-20 h-20" src={o?.img} alt="" />

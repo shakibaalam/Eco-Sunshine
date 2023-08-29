@@ -14,17 +14,17 @@ import { useSelector } from "react-redux";
 const ProductDetails = () => {
   const { id } = useParams();
   const { data: productById, isLoading } = useGetProductByIdQuery(id);
-  console.log(productById);
+  // console.log(productById);
 
   const [addCart, resInfo] = usePostCartMutation();
   // console.log(getCart);
 
   useEffect(() => {
     if (resInfo?.status === "fulfilled") {
-      console.log(resInfo?.status);
+      // console.log(resInfo?.status);
       toast.success("Successfully added to the cart");
     } else if (resInfo?.status === "rejected") {
-      console.log(resInfo?.status);
+      // console.log(resInfo?.status);
       const errorMessage = resInfo?.error?.data?.message;
       toast.error(errorMessage);
     }
@@ -48,7 +48,7 @@ const ProductDetails = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="lg:w-[80%] mx-auto">
+        <div className="lg:w-[80%] w-[90%] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 bg-slate-100 shadow-lg mt-20">
             <img
               className="w-[80%] h-[400px] mx-auto"

@@ -33,6 +33,7 @@ import RequireAdmin from "../require/RequireAdmin";
 import MyEvent from "../components/Dashboard/User/MyEvent";
 import PaymentHistory from "../components/Dashboard/User/PaymentHistory";
 import StripePaymentForm from "../pages/StripePaymentForm";
+import AllRegEvent from "../components/Dashboard/Admin/AllRegEvent";
 
 const router = createBrowserRouter([
   {
@@ -113,6 +114,14 @@ const router = createBrowserRouter([
         element: (
           <RequireAdmin>
             <ManageProduct />
+          </RequireAdmin>
+        ),
+      },
+      {
+        path: "registered-event",
+        element: (
+          <RequireAdmin>
+            <AllRegEvent />
           </RequireAdmin>
         ),
       },

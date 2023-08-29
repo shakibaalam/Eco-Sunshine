@@ -9,7 +9,7 @@ const AllBlogs = ({ b }) => {
   return (
     <div key={b?._id} className=" shadow-lg shadow-[#79bf1856]">
       <div className="relative w-full h-[200px] overflow-hidden rounded group">
-        <img className="w-full  rounded" src={b?.img} alt="" />
+        <img className="w-full rounded" src={b?.img} alt="" />
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-[#7abf18] bg-opacity-50 rounded">
           <Link
             to={`/blogDetails/${b?._id}`}

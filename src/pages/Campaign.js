@@ -11,7 +11,7 @@ const Campaign = () => {
   const { data: allCampaign, isLoading } = useGetCampaignQuery();
   const reversedCampaign = allCampaign?.data?.slice()?.reverse();
 
-  console.log(reversedCampaign);
+  // console.log(reversedCampaign);
 
   // Calculate the total number of pages
   const totalPages = Math.ceil(reversedCampaign?.length / itemsPerPage);
@@ -32,7 +32,7 @@ const Campaign = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 lg:w-[90%] xl:w-[85%] mx-auto">
+        <div className="mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 w-[95%] lg:w-[90%] xl:w-[85%] mx-auto">
           {current?.map((c) => (
             <AllCampaign campaign={c} key={c?.id} />
           ))}

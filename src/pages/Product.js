@@ -34,7 +34,7 @@ const Product = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 lg:w-[90%] xl:w-[85%] mx-auto">
+        <div className="mt-10 grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-10 w-[95%] lg:w-[90%] xl:w-[85%] mx-auto">
           {current?.map((p) => (
             <AllProducts key={p._id} p={p} shop />
           ))}

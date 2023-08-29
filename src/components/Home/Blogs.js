@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const Blogs = () => {
   const { data: ecoBlog, isLoading } = useGetBlogQuery();
-  console.log(ecoBlog);
+  // console.log(ecoBlog);
   const navigate = useNavigate();
 
   const reversedBlog = ecoBlog?.data?.slice().reverse();
@@ -24,7 +24,7 @@ const Blogs = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="lg:w-[90%] xl:w-[85%] mx-auto">
+        <div className="lg:w-[90%] xl:w-[85%] w-[95%] mx-auto">
           <div className="mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 ">
             {reversedBlog?.slice(0, 3)?.map((b) => (
               <AllBlogs b={b} key={b?.id} />

@@ -8,19 +8,13 @@ import {
 import { toast } from "react-toastify";
 import Loading from "../../../shared/Loading";
 
-// Sample data for demonstration purposes
-const campaigns = [
-  { id: 1, name: "Campaign 1", startDate: "2023-07-31", endDate: "2023-08-15" },
-  { id: 2, name: "Campaign 2", startDate: "2023-08-16", endDate: "2023-09-30" },
-  { id: 3, name: "Campaign 3", startDate: "2023-09-01", endDate: "2023-09-30" },
-];
 
 const ManageCampaign = () => {
   const { data: allCampaign, isLoading, refetch } = useGetCampaignQuery();
   const [deleteCampaign, resDeleteInfo] = useDeleteCampaignMutation();
   const [editCampaign, resEditInfo] = useEditCampaignMutation();
 
-  console.log(allCampaign);
+  // console.log(allCampaign);
 
   const [editPopup, setEditPopup] = useState(null);
   const {
@@ -32,11 +26,11 @@ const ManageCampaign = () => {
 
   useEffect(() => {
     if (resDeleteInfo?.status === "fulfilled") {
-      console.log(resDeleteInfo?.status);
+      // console.log(resDeleteInfo?.status);
       refetch();
       toast.success("Successfully deleted");
     } else if (resDeleteInfo?.status === "rejected") {
-      console.log(resDeleteInfo?.status);
+      // console.log(resDeleteInfo?.status);
       const errorMessage = resDeleteInfo?.error?.data?.message;
       toast.error(errorMessage);
     }
@@ -44,11 +38,11 @@ const ManageCampaign = () => {
 
   useEffect(() => {
     if (resEditInfo?.status === "fulfilled") {
-      console.log(resEditInfo?.status);
+      // console.log(resEditInfo?.status);
       refetch();
       toast.success("Successfully edited");
     } else if (resEditInfo?.status === "rejected") {
-      console.log(resEditInfo?.status);
+      // console.log(resEditInfo?.status);
       const errorMessage = resEditInfo?.error?.data?.message;
       toast.error(errorMessage);
     }
@@ -67,12 +61,12 @@ const ManageCampaign = () => {
   };
 
   const handleDelete = (id) => {
-    console.log("Deleting campaign with ID:", id);
+    // console.log("Deleting campaign with ID:", id);
     deleteCampaign(id);
   };
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     const formData = {
       title: data.title,
       targetAmount: data.targetAmount,

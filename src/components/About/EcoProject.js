@@ -45,7 +45,7 @@ const EcoProject = () => {
     <div>
       <HeadTitle title="ECO PROJECTS" />
 
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 lg:w-[80%] mx-auto my-10">
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-4 lg:w-[80%] w-[95%] mx-auto my-10">
         {project?.map((p) => (
           <div key={p?.id} className="relative w-full h-full rounded group">
             <img className="w-full h-full rounded" src={p?.img} alt="" />

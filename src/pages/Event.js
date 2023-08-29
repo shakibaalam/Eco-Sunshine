@@ -11,7 +11,7 @@ const Event = () => {
   const { data: allEvents, isLoading } = useGetEventQuery();
   const reversedEvents = allEvents?.data?.slice()?.reverse();
 
-  console.log(reversedEvents);
+  // console.log(reversedEvents);
 
   // Calculate the total number of pages
   const totalPages = Math.ceil(reversedEvents?.length / itemsPerPage);
@@ -33,7 +33,7 @@ const Event = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 lg:w-[90%] xl:w-[85%] mx-auto">
+        <div className="mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 w-[90%] lg:w-[90%] xl:w-[85%] mx-auto">
           {current?.map((e) => (
             <AllEvent e={e} key={e?.id} />
           ))}

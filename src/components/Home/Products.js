@@ -24,8 +24,8 @@ const Products = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="lg:w-[90%] xl:w-[85%] mx-auto my-10">
-          <div className=" grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5 ">
+        <div className="lg:w-[90%] xl:w-[85%] w-[95%] mx-auto my-10">
+          <div className=" grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5 ">
             {reversedProduct?.slice(0, 4).map((p) => (
               <AllProducts key={p._id} p={p} />
             ))}

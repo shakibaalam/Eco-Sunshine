@@ -34,7 +34,7 @@ const Blog = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 lg:w-[90%] xl:w-[85%] mx-auto">
+        <div className="mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 w-[95%] lg:w-[90%] xl:w-[85%] mx-auto">
           {currentBlogs?.slice(0, 3)?.map((b) => (
             <AllBlogs b={b} key={b?.id} />
           ))}

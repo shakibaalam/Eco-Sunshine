@@ -21,7 +21,7 @@ const StripePaymentForm = () => {
       if (error) {
         throw new Error(error.message);
       }
-      console.log(paymentMethod);
+      // console.log(paymentMethod);
 
       const { data } = await axios.post('http://localhost:5000/api/v1/products/payment-recive', {
         amount: 100, 

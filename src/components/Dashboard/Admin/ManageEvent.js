@@ -32,11 +32,11 @@ const ManageEvent = () => {
 
   useEffect(() => {
     if (resDeleteInfo?.status === "fulfilled") {
-      console.log(resDeleteInfo?.status);
+      // console.log(resDeleteInfo?.status);
       refetch();
       toast.success("Successfully deleted");
     } else if (resDeleteInfo?.status === "rejected") {
-      console.log(resDeleteInfo?.status);
+      // console.log(resDeleteInfo?.status);
       const errorMessage = resDeleteInfo?.error?.data?.message;
       toast.error(errorMessage);
     }
@@ -44,11 +44,11 @@ const ManageEvent = () => {
 
   useEffect(() => {
     if (resEditInfo?.status === "fulfilled") {
-      console.log(resEditInfo?.status);
+      // console.log(resEditInfo?.status);
       refetch();
       toast.success("Successfully edited");
     } else if (resEditInfo?.status === "rejected") {
-      console.log(resEditInfo?.status);
+      // console.log(resEditInfo?.status);
       const errorMessage = resEditInfo?.error?.data?.message;
       toast.error(errorMessage);
     }
@@ -67,7 +67,7 @@ const ManageEvent = () => {
   };
 
   const handleDelete = (id) => {
-    console.log("Deleting event with ID:", id);
+    // console.log("Deleting event with ID:", id);
     deleteEvent(id);
   };
 

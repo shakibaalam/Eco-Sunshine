@@ -36,10 +36,10 @@ const Volunteer = () => {
     <div>
       <HeadTitle title="OUR VOLUNTEERS" />
 
-      <div className=" grid grid-cols-4 gap-10 lg:w-[80%] mx-auto">
+      <div className=" grid lg:grid-cols-4 grid-cols-2 gap-10 lg:w-[80%] w-[95%] mx-auto mt-12">
         {volunteer?.map((v) => (
           <div key={v?.id} className=" text-center">
-            <img className="border-2 border-[#7abf18] rounded-full mb-2 " src={v?.img} alt="" />
+            <img className="border-2 border-[#7abf18] rounded-full mb-2 w-full" src={v?.img} alt="" />
             <p>{v?.des}</p>
           </div>
         ))}

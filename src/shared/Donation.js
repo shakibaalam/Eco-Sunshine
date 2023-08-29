@@ -16,7 +16,7 @@ const Donation = ({ id }) => {
   const [isStripe, setStripe] = useState(null);
 
   useEffect(() => {
-    console.log(resIdInfo);
+    // console.log(resIdInfo);
     if (resIdInfo?.status === "fulfilled") {
       setStripe(resIdInfo?.data?.customerId);
     }
@@ -28,7 +28,7 @@ const Donation = ({ id }) => {
 
   const handleCustomAmountChange = (event) => {
     setCustomAmount(event.target.value);
-    setSelectedAmount(null); // Reset selectedAmount when user enters a custom amount
+    setSelectedAmount(null); 
   };
 
   const handleDonate = () => {
@@ -116,7 +116,7 @@ const Donation = ({ id }) => {
           <StripePaymentForm
             isStripe={isStripe}
             setStripe={setStripe}
-            cartIds={[id]}
+            cartIds={[id]} setSelectedAmount={setSelectedAmount}
             totalPrice={selectedAmount || customAmount} donate
           />
         </Elements>

@@ -9,9 +9,9 @@ const Footer = () => {
   const reversedBlog = ecoBlog?.data?.slice().reverse();
 
   return (
-    <div className="bg-[#1e1e1e] p-10 text-gray-200 flex gap-5 justify-around mt-20">
+    <div className="bg-[#1e1e1e] p-10 text-gray-200 md:flex gap-5  md:justify-around mt-20">
       <div>
-        <h2 className="mb-10 text-lg font-bold ">ABOUT ECO SUNSHINE</h2>
+        <h2 className="md:mb-10 text-lg font-bold ">ABOUT ECO SUNSHINE</h2>
         <p className="flex gap-2 items-center ">
           <MdCall className="w-5 h-5" /> 0800 - 3277 - 2808
         </p>
@@ -29,8 +29,8 @@ const Footer = () => {
       </div>
 
       {/* 2nd */}
-      <div>
-        <h2 className="mb-10 text-lg font-bold ">RECENT BLOG</h2>
+      <div className="mt-10 md:mt-0">
+        <h2 className="md:mb-10 text-lg font-bold ">RECENT BLOG</h2>
         <div>
           {reversedBlog?.slice(0, 3)?.map((b) => (
             <div key={b?.id} className="flex gap-5 mb-3">
@@ -45,8 +45,8 @@ const Footer = () => {
       </div>
 
       {/* 3rd */}
-      <div>
-        <h2 className="mb-10 text-lg font-bold ">BLOG CATEGORIES</h2>
+      <div className="mt-10 md:mt-0">
+        <h2 className="md:mb-10 text-lg font-bold ">BLOG CATEGORIES</h2>
         <ul className=" flex flex-col gap-4">
           <li className=" hover:text-[#7abf18] cursor-pointer">Campaign</li>
           <li className=" hover:text-[#7abf18] cursor-pointer">Nature</li>
@@ -59,8 +59,8 @@ const Footer = () => {
       </div>
 
       {/* 4th */}
-      <div>
-        <h2 className="mb-10 text-lg font-bold ">INFORMATION</h2>
+      <div className="mt-10 md:mt-0">
+        <h2 className="md:mb-10 text-lg font-bold ">INFORMATION</h2>
 
         <div className=" flex flex-col gap-4">
           <Link to="/signup">Registration</Link>

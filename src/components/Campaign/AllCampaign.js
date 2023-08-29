@@ -25,7 +25,7 @@ const AllCampaign = ({ campaign }) => {
   return (
     <div className="group ">
       <div className="bg-[#f0f0f0] rounded shadow-md group-hover:hidden h-full">
-        <img className=" rounded" src={campaign?.img} alt="" />
+        <img className=" rounded w-full" src={campaign?.img} alt="" />
         <div className="px-5 text-[#555454] pb-5">
           <h4 className=" font-bold text-lg my-3">{campaign?.title}</h4>
           <p className="leading-5 border-b-2 border-[#b2b0b0] pb-3 h-24 overflow-hidden">

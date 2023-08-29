@@ -13,11 +13,11 @@ const AddCampaign = () => {
 
   useEffect(() => {
     if (resCampaignInfo?.status === "fulfilled") {
-      console.log(resCampaignInfo?.status);
+      // console.log(resCampaignInfo?.status);
       toast.success("Successfully posted");
       reset();
     } else if (resCampaignInfo?.status === "rejected") {
-      console.log(resCampaignInfo?.status);
+      // console.log(resCampaignInfo?.status);
       const errorMessage = resCampaignInfo?.error?.data?.message;
       toast.error(errorMessage);
     }
