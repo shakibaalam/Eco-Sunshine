@@ -228,6 +228,8 @@ const DonateForm = () => {
   const donates = ["$1000", "$2000", "$3000"];
   const selectedDonate = watch("selectedDonate");
 
+  console.log(selectedDonate);
+
   const handleDonateChange = (event) => {
     const selectedValue = event.target.value;
 
@@ -255,7 +257,7 @@ const DonateForm = () => {
       navigate("/login");
     } else {
       const res = await customerId();
-      // console.log(res);
+       console.log(res);
       if (res?.data?.customerId) {
         setStripe(true);
       }
@@ -297,7 +299,7 @@ const DonateForm = () => {
             </div>
             <div className="mb-4">
               <input
-                type="text"
+                type="email"
                 id="contact"
                 {...register("contact", {
                   required: "Email/Phone Number is required",

@@ -58,7 +58,7 @@ const ProductDetails = () => {
             <div className="my-auto">
               <h4 className=" text-3xl font-bold">{productById?.name}</h4>
               <p className=" text-primary font-bold text-2xl my-3">
-                {productById?.price}
+                ${productById?.price}
               </p>
               <p>{productById?.des}</p>
               {user?.role !== "ADMIN" && (

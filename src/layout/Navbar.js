@@ -74,10 +74,18 @@ const Navbar = () => {
         </div>
         <div className="flex items-center gap-5 cursor-pointer pr-4 lg:pr-0">
           <div className="md:flex hidden items-center gap-5 border-l-2 border-r-2 px-2 border-[#7abf18]">
-            <FaFacebookF className="hover:text-[#7abf18]" />
-            <GrLinkedinOption className="hover:text-[#7abf18]" />
-            <GrSkype className="hover:text-[#7abf18]" />
-            <GrTwitter className="hover:text-[#7abf18]" />
+            <Link to="https://www.facebook.com/shakiba.alam.779">
+              <FaFacebookF className="hover:text-[#7abf18]" />
+            </Link>
+            <Link to="https://www.linkedin.com/in/shakiba-alam/">
+              <GrLinkedinOption className="hover:text-[#7abf18]" />
+            </Link>
+            <Link to="https://www.facebook.com/shakiba.alam.779">
+              <GrSkype className="hover:text-[#7abf18]" />
+            </Link>
+            <Link to="https://www.instagram.com/shhakibaalam/">
+              <GrTwitter className="hover:text-[#7abf18]" />
+            </Link>
           </div>
           {user?.role !== "ADMIN" && <Cart />}
           <GiHamburgerMenu

@@ -1,15 +1,21 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const Comment = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const onSubmit = (data) => {
     // console.log(data);
+    if (data) {
+      toast.success("Thank you for your valuable comment.");
+      reset();
+    }
   };
   return (
     <div className="my-20">

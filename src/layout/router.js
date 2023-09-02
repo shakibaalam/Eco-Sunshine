@@ -66,7 +66,7 @@ const router = createBrowserRouter([
     ),
     children: [
       { path: "my-order", element: <UserOrder /> },
-      { path: "my-donation", element: <MyDoantion /> },
+      // { path: "my-donation", element: <MyDoantion /> },
       { path: "my-event", element: <MyEvent /> },
       { path: "payment-history", element: <PaymentHistory /> },
       {

@@ -21,10 +21,18 @@ const Footer = () => {
         </p>
 
         <div className="flex gap-2 items-center mt-5 cursor-pointer">
-          <FaFacebookF className=" border-2 border-gray-200 p-1 rounded-full w-7 h-7 text-gray-200" />
-          <FaTwitter className=" border-2 border-gray-200 p-1 rounded-full w-7 h-7 text-gray-200" />
-          <FaGoogle className=" border-2 border-gray-200 p-1 rounded-full w-7 h-7 text-gray-200" />
-          <FaLinkedinIn className=" border-2 border-gray-200 p-1 rounded-full w-7 h-7 text-gray-200" />
+          <Link to="https://www.facebook.com/shakiba.alam.779">
+            <FaFacebookF className=" border-2 border-gray-200 p-1 rounded-full w-7 h-7 text-gray-200" />
+          </Link>
+          <Link to="https://www.facebook.com/shakiba.alam.779">
+            <FaTwitter className=" border-2 border-gray-200 p-1 rounded-full w-7 h-7 text-gray-200" />
+          </Link>
+          <Link to="https://www.facebook.com/shakiba.alam.779">
+            <FaGoogle className=" border-2 border-gray-200 p-1 rounded-full w-7 h-7 text-gray-200" />
+          </Link>
+          <Link to="https://www.linkedin.com/in/shakiba-alam/">
+            <FaLinkedinIn className=" border-2 border-gray-200 p-1 rounded-full w-7 h-7 text-gray-200" />
+          </Link>
         </div>
       </div>
 

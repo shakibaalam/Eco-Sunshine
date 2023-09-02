@@ -18,6 +18,10 @@ const StripePaymentForm = ({
   const elements = useElements();
 
   const handleSubmit = async (event) => {
+    if (donate) {
+      toast.success("Successfully donation completed! Thank you.");
+      return;
+    }
     const accessToken = localStorage.getItem("accessToken");
     event.preventDefault();
     setLoading(true);

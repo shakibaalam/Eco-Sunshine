@@ -52,7 +52,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink
+                {/* <NavLink
                   to="/dashboard/my-donation"
                   className={`block py-2 px-4 rounded hover:bg-white hover:text-[#7abf18] ${
                     selectedSubmenu === "my-donation"
@@ -61,7 +61,7 @@ const Dashboard = () => {
                   }`}
                 >
                   My Donations
-                </NavLink>
+                </NavLink> */}
               </li>
               <li>
                 <NavLink
