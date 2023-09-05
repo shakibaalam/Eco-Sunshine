@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { setCredentials } from "../redux/Slice/authSlice";
 import { setUser } from "../redux/Slice/userSlice";
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
   const [createLogin, resInfo] = useCreateLoginMutation();
@@ -36,10 +37,11 @@ const LoginForm = () => {
       dispatch(setUser(data?.user));
       const prevPath = location.state?.from || "/";
       navigate(prevPath);
-    } else if (resInfo?.status === "rejected") {
-      // console.log('problem');
+    } else {
+      // toast.error('Something Went wrong');
+      // console.log(resInfo);
     }
-  }, [resInfo.status, resInfo.data, resInfo.error, dispatch, navigate,location.state?.from]);
+  }, [resInfo, dispatch, navigate, location.state?.from]);
 
   const onSubmit = (data) => {
     //console.log(data);
@@ -47,7 +49,10 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="h-[100vh] lg:mt-[-100px] bg-cover bg-no-repeat" style={{ backgroundImage: `url(${banner})` }}>
+    <div
+      className="h-[100vh] lg:mt-[-100px] bg-cover bg-no-repeat"
+      style={{ backgroundImage: `url(${banner})` }}
+    >
       <div className="flex justify-center items-center h-full">
         <div className="w-full max-w-md">
           <h2 className=" text-center font-bold text-2xl text-slate-400 uppercase mb-5">

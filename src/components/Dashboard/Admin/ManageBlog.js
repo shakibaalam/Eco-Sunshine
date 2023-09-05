@@ -58,9 +58,9 @@ const ManageBlog = () => {
     // Open the edit popup and set initial values for the form
     setEditPopup(blog);
     reset({
-      name: blog?.name,
+      name: blog?.title,
       author: blog.author,
-      des: blog.des,
+      des: blog.content,
       // Add other fields as needed
     });
   };
@@ -75,9 +75,9 @@ const ManageBlog = () => {
     const imageUrl = URL.createObjectURL(imgFile[0]);
     // console.log(editPopup);
     const formData = {
-      name: data?.name,
+      title: data?.name,
       author: data?.author,
-      des: data?.des,
+      content: data?.des,
       img: imageUrl,
     };
     const body = {
@@ -88,6 +88,7 @@ const ManageBlog = () => {
     editBlog(body);
     // Close the edit popup
     setEditPopup(null);
+    refetch();
   };
 
   return (
@@ -109,10 +110,18 @@ const ManageBlog = () => {
           <tbody>
             {allBlog?.data?.map((blog) => (
               <tr key={blog?._id}>
-                <td className="border border-[#7abf18] p-2 text-center">{blog?._id}</td>
-                <td className="border border-[#7abf18] p-2 text-center">{blog?.title}</td>
-                <td className="border border-[#7abf18] p-2 text-center">{blog?.author}</td>
-                <td className="border border-[#7abf18] p-2 text-center">{blog?.date}</td>
+                <td className="border border-[#7abf18] p-2 text-center">
+                  {blog?._id}
+                </td>
+                <td className="border border-[#7abf18] p-2 text-center">
+                  {blog?.title}
+                </td>
+                <td className="border border-[#7abf18] p-2 text-center">
+                  {blog?.author}
+                </td>
+                <td className="border border-[#7abf18] p-2 text-center">
+                  {blog?.date}
+                </td>
                 <td className="border border-[#7abf18] p-2 text-center">
                   <button
                     onClick={() => handleEdit(blog)}
@@ -149,8 +158,8 @@ const ManageBlog = () => {
                   {...register("name", { required: "Title is required" })}
                   className="focus:outline-none w-full border-b border-[#7abf18]"
                 />
-                {errors.title && (
-                  <span className="text-red-600">{errors.title.message}</span>
+                {errors.name && (
+                  <span className="text-red-600">{errors.name.message}</span>
                 )}
               </div>
               <div className="mb-4">
@@ -180,8 +189,8 @@ const ManageBlog = () => {
                     required: "Content is required",
                   })}
                 />
-                {errors.content && (
-                  <span className="text-red-600">{errors.content.message}</span>
+                {errors.des && (
+                  <span className="text-red-600">{errors.des.message}</span>
                 )}
               </div>
 
@@ -197,8 +206,8 @@ const ManageBlog = () => {
                     required: "Image is required",
                   })}
                 />
-                {errors.img && (
-                  <span className="text-red-600">{errors.img.message}</span>
+                {errors.image && (
+                  <span className="text-red-600">{errors.image.message}</span>
                 )}
               </div>
 

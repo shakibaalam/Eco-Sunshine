@@ -8,8 +8,10 @@ import banner2 from "../../img/banner2.jpg";
 import banner3 from "../../img/banner3.jpg";
 import Donation from "../../shared/Donation";
 import { FaWindowClose } from "react-icons/fa";
+import ContactPopup from "./ContactPopup";
 
 const Banner = () => {
+  const [showContactPopup, setShowContactPopup] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPopup, setPopup] = useState(false);
   const featuredProducts = [
@@ -133,7 +135,10 @@ const Banner = () => {
               <button className="bg-[#7abf18] rounded px-6 py-1 border-2 border-[#7abf18] uppercase font-bold text-white">
                 <span onClick={() => setPopup(true)}>Donate us</span>
               </button>
-              <button className="px-6 py-1 uppercase rounded font-bold text-white border-2 border-white">
+              <button
+                onClick={() => setShowContactPopup(true)}
+                className="px-6 py-1 uppercase rounded font-bold text-white border-2 border-white"
+              >
                 Contact us
               </button>
             </div>
@@ -155,7 +160,7 @@ const Banner = () => {
       </button>
 
       {isPopup && (
-        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-[99999999999999999]">
           <div className="bg-white rounded-lg p-6 w-1/2">
             <div className="bg-[#7abf18] text-white w-full flex justify-between items-center p-6">
               <h2 className="text-xl font-semibold">DONATE</h2>
@@ -168,6 +173,8 @@ const Banner = () => {
           </div>
         </div>
       )}
+
+      {showContactPopup && <ContactPopup setShowContactPopup={setShowContactPopup} />}
     </div>
   );
 };

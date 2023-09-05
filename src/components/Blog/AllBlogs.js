@@ -37,7 +37,17 @@ const AllBlogs = ({ b }) => {
         </p>
       </div>
 
-      <p className=" text-justify px-4 pb-4">{b?.content}</p>
+      <p className="text-justify px-4 pb-4">
+        {b?.content
+          .split("\n")
+          .slice(0, 2)
+          .map((line, index) => (
+            <span key={index}>
+              {line}
+              <br />
+            </span>
+          ))}
+      </p>
     </div>
   );
 };

@@ -8,7 +8,7 @@ import Loading from "../shared/Loading";
 const Product = () => {
   const { data: ecoProduct, isLoading } = useGetProductQuery();
 
-  const itemsPerPage = 6;
+  const itemsPerPage = 4;
   const [currentPage, setCurrentPage] = useState(1);
   const reversedProducts = ecoProduct?.data?.slice()?.reverse();
 

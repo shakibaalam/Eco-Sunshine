@@ -103,7 +103,7 @@ const ManageCampaign = () => {
               <tr key={campaign.id}>
                 <td className="border border-[#7abf18] p-2 text-center">{campaign?.title}</td>
                 <td className="border border-[#7abf18] p-2 text-center">
-                  {campaign?.targetAmount}
+                  ${campaign?.targetAmount}
                 </td>
                 <td className="border border-[#7abf18] p-2 text-center">
                   {campaign?.created_at}

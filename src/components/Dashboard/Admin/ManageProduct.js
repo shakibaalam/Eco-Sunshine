@@ -64,7 +64,7 @@ const ManageProduct = () => {
     const formData = {
       name: data?.name,
       price: data?.price,
-      quantity: data?.quantity,
+      availableQu: data?.quantity,
       img: imageUrl,
     };
 
@@ -109,7 +109,7 @@ const ManageProduct = () => {
 
                 <td className="border border-[#7abf18] p-2 text-center">{product?.name}</td>
                 <td className="border border-[#7abf18] p-2 text-center">{product?.price}</td>
-                <td className="border border-[#7abf18] p-2 text-center">{product?.quantity}</td>
+                <td className="border border-[#7abf18] p-2 text-center">{product?.availableQu}</td>
                 <td className="border border-[#7abf18] p-2 text-center">
                   <button
                     onClick={() => handleEdit(product)}
@@ -182,7 +182,7 @@ const ManageProduct = () => {
                   id="quantity"
                   placeholder="Enter the product quantity"
                   className="focus:outline-none border-b border-[#7abf18] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-                  defaultValue={editPopup?.quantity}
+                  defaultValue={editPopup?.availableQu}
                   {...register("quantity", {
                     required: "Quantity is required",
                   })}
